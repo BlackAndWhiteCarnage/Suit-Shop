@@ -37,6 +37,10 @@ const Dot = styled.div`
   height: 0.6rem;
   background: #eaeaea;
   border-radius: 50%;
+  @media screen and (min-width: 620px) {
+    width: 1rem;
+    height: 1rem;
+  }
 `;
 
 export default Dots;
