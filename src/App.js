@@ -2,6 +2,7 @@ import GlobalStyles from "./components/GlobalStyles";
 import Home from "./views/Home/Home";
 import AboutUs from "./views/AboutUs/AboutUs";
 import Collection from "./views/Collection/Collection";
+import Contact from "./views/Contact/Contact";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Home />
       <AboutUs />
       <Collection />
+      <Contact />
     </div>
   );
 }
