@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ContactImage from "./Contact.jpg";
 import SquareImage from "../../Assets/SquareImage.svg";
 import LogoImage from "../../Assets/Logo.svg";
+import Dots from "../../components/Dots";
 
 const Contact = () => {
   return (
@@ -21,6 +22,7 @@ const Contact = () => {
           <Label htmlFor="Message">Message</Label>
           <TextArea id="Message" type="text" />
           <Button>Submit</Button>
+          <Dots />
         </Form>
       </BlackLayer>
     </ContactSection>

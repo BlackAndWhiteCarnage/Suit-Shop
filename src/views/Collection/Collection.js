@@ -1,43 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { CollectionData } from "../../Data/CollectionData";
 import LogoImage from "../../Assets/Logo.svg";
 import ShapeIcon from "../../Assets/ShapeIcon.svg";
 import ArrowIcon from "../../Assets/Arrow.svg";
 import Dots from "../../components/Dots";
 import ScrollIcon from "../../Assets/ScrollIcon.svg";
-import Photo1 from "../../Assets/1.jpg";
-import Photo2 from "../../Assets/2.jpg";
 
 const Collection = () => {
+  const [subCategories, setSubCategories] = useState([]);
+  const [productPhoto, setProductPhoto] = useState([]);
+
+  const getProductPhotosHandler = (subCategory) => {
+    let data = CollectionData.map((item) =>
+      item.products.filter((o) => {
+        return o.category === subCategory;
+      })
+    );
+
+    setProductPhoto(data);
+  };
+
   return (
     <CollectionSection>
       <Categories>
         <MainCategories>
           <Shape src={ShapeIcon} />
-          <li>Coats &amp; Jackets</li>
-          <li>Suits</li>
-          <li>Jumpers &amp; Sweatshirts</li>
-          <li>Blazers</li>
-          <li>Trousers</li>
-          <li>Shoes</li>
-          <li>Accessories</li>
+          {CollectionData.map((item) => (
+            <li
+              onClick={() => {
+                setSubCategories(item.subCategories.map((i) => i));
+              }}
+            >
+              {item.category}
+            </li>
+          ))}
           <Arrow src={ArrowIcon} />
         </MainCategories>
         <SubCategories>
           <Logo src={LogoImage} />
-          <li>See All</li>
-          <li>Waistcoaths</li>
-          <li>Leather Jackets</li>
-          <li>Denim Jackets</li>
+          {subCategories.map((subCategory) => (
+            <li onClick={() => getProductPhotosHandler(subCategory)}>
+              {subCategory}
+            </li>
+          ))}
           <Scroll src={ScrollIcon} />
         </SubCategories>
         <Dots />
       </Categories>
       <Products>
-        <ProductImage src={Photo1} />
-        <ProductImage src={Photo2} />
-        <ProductImage src={Photo1} />
-        <ProductImage src={Photo2} />
+        {productPhoto.map((o) =>
+          o.map((item, index) => {
+            return <ProductImage src={item.productPhotos[index]} />;
+          })
+        )}
+        {/* {productPhoto.map((o) =>
+          o.map((item) =>
+            item.productPhotos.map((src) => <ProductImage src={src} />)
+          )
+        )} */}
       </Products>
     </CollectionSection>
   );
