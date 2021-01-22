@@ -13,7 +13,19 @@ body{
     font-family: 'Libre Baskerville', serif;
     font-weight: bold;
     color: #EAEAEA;
+    overflow: hidden;
 }
+::-webkit-scrollbar {
+    width: .5rem;
+    height: .5rem;
+    }
+    ::-webkit-scrollbar-track {
+    width: .5rem;
+    background: #030303;
+    }
+    ::-webkit-scrollbar-thumb {
+    background: #E40000;
+    }
 `;
 
 export default GlobalStyles;

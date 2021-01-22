@@ -10,7 +10,7 @@ import WavesIcon from "../../Assets/WavesIcon.svg";
 
 const AboutUs = () => {
   return (
-    <AboutUsSection>
+    <AboutUsSection id="About Us">
       <AboutUsSectionImage src={AboutUsImage} alt="Man looking down the suit" />
       <AboutUsSquare>
         <X src={XIcon} />

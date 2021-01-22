@@ -6,10 +6,14 @@ import ShapeIcon from "../../Assets/ShapeIcon.svg";
 import ArrowIcon from "../../Assets/Arrow.svg";
 import Dots from "../../components/Dots";
 import ScrollIcon from "../../Assets/ScrollIcon.svg";
+import ProductItem from "../../components/ProductItem";
 
 const Collection = () => {
   const [subCategories, setSubCategories] = useState([]);
   const [productPhoto, setProductPhoto] = useState([]);
+  const [toggleProduct, setToggleProduct] = useState(false);
+  const [productItem, setProductItem] = useState();
+  const [bigImage, setBigImage] = useState();
 
   const getProductPhotosHandler = (subCategory) => {
     let data = CollectionData.map((item) =>
@@ -21,28 +25,36 @@ const Collection = () => {
     setProductPhoto(data);
   };
 
+  const passItemHandler = (item) => {
+    setProductItem(item);
+  };
+
+  const bigImageHandler = (photo) => {
+    setBigImage(photo);
+  };
+
   return (
-    <CollectionSection>
+    <CollectionSection id="Collection">
       <Categories>
         <MainCategories>
           <Shape src={ShapeIcon} />
           {CollectionData.map((item) => (
-            <li
+            <ListItem
               onClick={() => {
                 setSubCategories(item.subCategories.map((i) => i));
               }}
             >
               {item.category}
-            </li>
+            </ListItem>
           ))}
           <Arrow src={ArrowIcon} />
         </MainCategories>
         <SubCategories>
           <Logo src={LogoImage} />
           {subCategories.map((subCategory) => (
-            <li onClick={() => getProductPhotosHandler(subCategory)}>
+            <ListItem onClick={() => getProductPhotosHandler(subCategory)}>
               {subCategory}
-            </li>
+            </ListItem>
           ))}
           <Scroll src={ScrollIcon} />
         </SubCategories>
@@ -51,15 +63,29 @@ const Collection = () => {
       <Products>
         {productPhoto.map((o) =>
           o.map((item, index) => {
-            return <ProductImage src={item.productPhotos[index]} />;
+            return (
+              <ProductImage
+                src={item.productPhotos[0]}
+                onClick={() => {
+                  setBigImage(item.productPhotos[0]);
+                  setToggleProduct(true);
+                  passItemHandler(item);
+                }}
+              />
+            );
           })
         )}
-        {/* {productPhoto.map((o) =>
-          o.map((item) =>
-            item.productPhotos.map((src) => <ProductImage src={src} />)
-          )
-        )} */}
       </Products>
+      <ProductItem
+        toggleProduct={toggleProduct}
+        setToggleProduct={setToggleProduct}
+        productItem={productItem}
+        setBigImage={setBigImage}
+        bigImageHandler={bigImageHandler}
+        bigImage={bigImage}
+        productPhoto={productPhoto}
+        passItemHandler={passItemHandler}
+      />
     </CollectionSection>
   );
 };
@@ -69,6 +95,7 @@ const CollectionSection = styled.section`
   height: 100vh;
   background: #141c1f;
   display: flex;
+  position: relative;
 `;
 
 const Categories = styled.div`
@@ -143,6 +170,32 @@ const SubCategories = styled.ul`
   }
 `;
 
+const ListItem = styled.li`
+  cursor: pointer;
+  position: relative;
+  width: fit-content;
+  &::before {
+    content: "";
+    position: absolute;
+    left: -0.5rem;
+    width: 0.5rem;
+    height: 100%;
+    background: rgba(255, 255, 255, 1);
+    transition: 0.5s ease;
+  }
+  &:hover {
+    &::before {
+      transition: 0.5s ease;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
+  @media screen and (min-width: 830px) {
+  }
+  @media screen and (min-width: 1200px) {
+  }
+`;
+
 const Scroll = styled.img`
   position: absolute;
   right: 0;
@@ -160,6 +213,7 @@ const Logo = styled.img`
   transform: translate(-50%, -50%);
   width: 15rem;
   opacity: 0.1;
+  pointer-events: none;
   z-index: 5;
   @media screen and (min-width: 830px) {
     width: 20rem;
@@ -189,6 +243,12 @@ const ProductImage = styled.img`
   object-fit: cover;
   z-index: 8;
   margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  &:hover {
+    transform: scale(0.98);
+    transition: 0.5s ease;
+  }
   @media screen and (min-width: 830px) {
     height: 80%;
     width: 49%;

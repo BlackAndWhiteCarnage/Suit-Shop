@@ -10,6 +10,10 @@ import JeansJacket23 from "./JeansJacket2-3.jpg";
 import JeansJacket31 from "./JeansJacket3-1.jpg";
 import JeansJacket32 from "./JeansJacket3-2.jpg";
 import JeansJacket33 from "./JeansJacket3-3.jpg";
+//JeansJacket 4
+import JeansJacket41 from "./JeansJacket4-1.jpg";
+import JeansJacket42 from "./JeansJacket4-2.jpg";
+import JeansJacket43 from "./JeansJacket4-3.jpg";
 //Coat 1
 import Coat11 from "./Coat1-1.jpg";
 import Coat12 from "./Coat1-2.jpg";
@@ -51,31 +55,67 @@ export const CollectionData = [
     products: [
       {
         category: "Kurtki Jeansowe",
+        price: 210.1,
         productName: "Jeansowa kurtka",
         productPhotos: [JeansJacket21, JeansJacket22, JeansJacket23],
       },
       {
         category: "Kurtki Jeansowe",
+        price: 340.2,
         productName: "Jeansowa kurtka z naszywkami",
         productPhotos: [JeansJacket11, JeansJacket12, JeansJacket13],
       },
       {
         category: "Kurtki Jeansowe",
+        price: 180.8,
         productName: "Jeansowa kurtka",
         productPhotos: [JeansJacket31, JeansJacket32, JeansJacket33],
       },
       {
+        category: "Kurtki Jeansowe",
+        price: 180.8,
+        productName: "Jeansowa kurtka",
+        productPhotos: [JeansJacket31, JeansJacket32, JeansJacket33],
+      },
+      {
+        category: "Kurtki Jeansowe",
+        price: 180.8,
+        productName: "Jeansowa kurtka",
+        productPhotos: [JeansJacket31, JeansJacket32, JeansJacket33],
+      },
+      {
+        category: "Kurtki Jeansowe",
+        price: 180.8,
+        productName: "Jeansowa kurtka",
+        productPhotos: [JeansJacket31, JeansJacket32, JeansJacket33],
+      },
+      {
+        category: "Kurtki Jeansowe",
+        price: 180.8,
+        productName: "Jeansowa kurtka",
+        productPhotos: [JeansJacket31, JeansJacket32, JeansJacket33],
+      },
+      {
+        category: "Kurtki Jeansowe",
+        price: 230.5,
+        productName: "Jeansowasx kurtka",
+        productPhotos: [JeansJacket41, JeansJacket42, JeansJacket43],
+      },
+      {
         category: "Płaszcze",
+        price: 200.5,
         productName: "Tkaninowy płaszcz z klasycznym kołnierzem",
         productPhotos: [Coat11, Coat12, Coat13],
       },
       {
         category: "Kamizelki",
+        price: 230.8,
         productName: "Pikowana kamizelka puchowa",
         productPhotos: [Waistcoath11, Waistcoath12, Waistcoath13],
       },
       {
         category: "Kurtki Skórzane",
+        price: 280.3,
         productName: "Kurtka skórzana z bawełnianym kapturem",
         productPhotos: [LeatherJacket11, LeatherJacket12, LeatherJacket13],
       },
@@ -87,21 +127,25 @@ export const CollectionData = [
     products: [
       {
         category: "Garnitury",
+        price: 125.6,
         productName: "Dopasowany, wełniany garnitur w kratę",
         productPhotos: [Suit11, Suit12, Suit13],
       },
       {
         category: "Garnitury",
+        price: 120.9,
         productName: "Dopasowany garnitur z wełny z delikatną strukturą",
         productPhotos: [Suit21, Suit22, Suit23],
       },
       {
         category: "Garnitury",
+        price: 220.8,
         productName: "Dopasowany, wełniany garnitur w kratę",
         productPhotos: [Suit31, Suit32, Suit33],
       },
       {
         category: "Zestawy Marynarka + Spodnie",
+        price: 150.0,
         productName: "Dopasowana marynarka bawełniana",
         productPhotos: [SuitAndThrousers11, SuitAndThrousers12],
       },

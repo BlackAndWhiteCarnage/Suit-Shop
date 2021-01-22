@@ -7,7 +7,7 @@ import Dots from "../../components/Dots";
 
 const Contact = () => {
   return (
-    <ContactSection>
+    <ContactSection id="Contact">
       <ContactSectionImage src={ContactImage} />
       <BlackLayer>
         <Logo src={LogoImage} alt="Logo Image" />
