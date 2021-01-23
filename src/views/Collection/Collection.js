@@ -4,7 +4,6 @@ import { CollectionData } from "../../Data/CollectionData";
 import LogoImage from "../../Assets/Logo.svg";
 import ShapeIcon from "../../Assets/ShapeIcon.svg";
 import ArrowIcon from "../../Assets/Arrow.svg";
-import Dots from "../../components/Dots";
 import ScrollIcon from "../../Assets/ScrollIcon.svg";
 import ProductItem from "../../components/ProductItem";
 
@@ -58,20 +57,20 @@ const Collection = () => {
           ))}
           <Scroll src={ScrollIcon} />
         </SubCategories>
-        <Dots />
       </Categories>
       <Products>
         {productPhoto.map((o) =>
           o.map((item, index) => {
             return (
-              <ProductImage
-                src={item.productPhotos[0]}
+              <ProductImageWrapper
                 onClick={() => {
                   setBigImage(item.productPhotos[0]);
                   setToggleProduct(true);
                   passItemHandler(item);
                 }}
-              />
+              >
+                <ProductImage src={item.productPhotos[0]} />
+              </ProductImageWrapper>
             );
           })
         )}
@@ -92,7 +91,7 @@ const Collection = () => {
 
 const CollectionSection = styled.section`
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   background: #141c1f;
   display: flex;
   position: relative;
@@ -101,7 +100,7 @@ const CollectionSection = styled.section`
 const Categories = styled.div`
   position: relative;
   width: 50%;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   @media screen and (min-width: 830px) {
@@ -121,7 +120,7 @@ const MainCategories = styled.ul`
   font-size: 1.4rem;
   padding: 1rem;
   @media screen and (min-width: 830px) {
-    height: 100vh;
+    height: 80vh;
     font-size: 1.8rem;
   }
   @media screen and (min-width: 1200px) {
@@ -162,7 +161,7 @@ const SubCategories = styled.ul`
   font-size: 1.2rem;
   padding: 1rem;
   @media screen and (min-width: 830px) {
-    height: 100vh;
+    height: 80vh;
     font-size: 1.4rem;
   }
   @media screen and (min-width: 1200px) {
@@ -170,7 +169,10 @@ const SubCategories = styled.ul`
   }
 `;
 
-const ListItem = styled.li`
+const ListItem = styled.button`
+  background: none;
+  border: none;
+  font-size: 1.8rem;
   cursor: pointer;
   position: relative;
   width: fit-content;
@@ -183,7 +185,9 @@ const ListItem = styled.li`
     background: rgba(255, 255, 255, 1);
     transition: 0.5s ease;
   }
-  &:hover {
+  &:hover,
+  :focus {
+    outline: none;
     &::before {
       transition: 0.5s ease;
       width: 100%;
@@ -227,7 +231,7 @@ const Logo = styled.img`
 
 const Products = styled.div`
   width: 50%;
-  height: 100vh;
+  height: 80vh;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
@@ -238,16 +242,31 @@ const Products = styled.div`
 `;
 
 const ProductImage = styled.img`
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: 1s ease;
+  &:hover {
+    transform: scale(1.1);
+    transition: 4s ease;
+  }
+`;
+
+const ProductImageWrapper = styled.button`
   width: 100%;
   height: 50%;
   object-fit: cover;
   z-index: 8;
   margin-bottom: 0.5rem;
+  background: none;
+  border: none;
   cursor: pointer;
+  overflow: hidden;
   transition: 0.3s ease;
-  &:hover {
-    transform: scale(0.98);
-    transition: 0.5s ease;
+  &:focus {
+    outline: none;
+    transform: scale(0.9);
   }
   @media screen and (min-width: 830px) {
     height: 80%;

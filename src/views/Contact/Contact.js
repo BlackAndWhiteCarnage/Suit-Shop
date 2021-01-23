@@ -3,7 +3,6 @@ import styled from "styled-components";
 import ContactImage from "./Contact.jpg";
 import SquareImage from "../../Assets/SquareImage.svg";
 import LogoImage from "../../Assets/Logo.svg";
-import Dots from "../../components/Dots";
 
 const Contact = () => {
   return (
@@ -22,7 +21,6 @@ const Contact = () => {
           <Label htmlFor="Message">Message</Label>
           <TextArea id="Message" type="text" />
           <Button>Submit</Button>
-          <Dots />
         </Form>
       </BlackLayer>
     </ContactSection>
@@ -31,13 +29,13 @@ const Contact = () => {
 
 const ContactSection = styled.section`
   width: 100%;
-  height: 100vh;
+  height: 80vh;
 `;
 
 const ContactSectionImage = styled.img`
   position: absolute;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   object-fit: cover;
   z-index: -1;
 `;
@@ -48,7 +46,7 @@ const BlackLayer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   background: rgba(0, 0, 0, 0.5);
   @media screen and (min-width: 1200px) {
     justify-content: space-around;
@@ -80,7 +78,7 @@ const Form = styled.form`
   justify-content: center;
   flex-direction: column;
   width: 80%;
-  height: 60%;
+  height: 80%;
   @media screen and (min-width: 1200px) {
     width: 40%;
   }
@@ -102,6 +100,10 @@ const Input = styled.input`
   color: white;
   border: none;
   background: rgba(255, 255, 255, 0.2);
+  &:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.5);
+  }
   @media screen and (min-width: 830px) {
     font-size: 1.8rem;
     height: 3rem;
@@ -120,6 +122,10 @@ const TextArea = styled.textarea`
   border: none;
   resize: none;
   background: rgba(255, 255, 255, 0.2);
+  &:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.5);
+  }
   @media screen and (min-width: 830px) {
     font-size: 1.8rem;
   }
@@ -138,6 +144,24 @@ const Button = styled.button`
   color: white;
   font-family: "Libre Baskerville", serif;
   font-weight: bold;
+  &::before {
+    content: "";
+    position: absolute;
+    left: -0.5rem;
+    width: 0.5rem;
+    height: 100%;
+    background: rgba(255, 255, 255, 1);
+    transition: 0.5s ease;
+  }
+  &:hover,
+  :focus {
+    outline: none;
+    &::before {
+      transition: 0.5s ease;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
   @media screen and (min-width: 830px) {
     font-size: 1.8rem;
   }

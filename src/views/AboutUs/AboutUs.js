@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import AboutUsImage from "./AboutUs.jpg";
-import Dots from "../../components/Dots";
 import TriangleImage from "./Triangle.svg";
 import ScrollIcon from "../../Assets/ScrollIcon.svg";
 import LogoImage from "../../Assets/Logo.svg";
@@ -16,7 +15,6 @@ const AboutUs = () => {
         <X src={XIcon} />
         <Waves src={WavesIcon} />
         <Scroll src={ScrollIcon} />
-        <Dots />
       </AboutUsSquare>
       <AboutUsSectionWrapper>
         <Header>
@@ -39,9 +37,10 @@ const AboutUs = () => {
 
 const AboutUsSection = styled.section`
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   position: relative;
+  overflow: hidden;
 `;
 
 const AboutUsSquare = styled.div`

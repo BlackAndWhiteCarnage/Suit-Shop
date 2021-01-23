@@ -9,11 +9,11 @@ const GlobalStyles = createGlobalStyle`
 html {
     font-size: 62.5%;
 }
-body{
+body, button{
     font-family: 'Libre Baskerville', serif;
     font-weight: bold;
     color: #EAEAEA;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 ::-webkit-scrollbar {
     width: .5rem;
