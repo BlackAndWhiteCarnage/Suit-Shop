@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { CollectionData } from "../../Data/CollectionData";
 import LogoImage from "../../Assets/Logo.svg";
 import ShapeIcon from "../../Assets/ShapeIcon.svg";
+import ShapeIcon4 from "../../Assets/ShapeIcon4.svg";
 import ArrowIcon from "../../Assets/Arrow.svg";
-import ScrollIcon from "../../Assets/ScrollIcon.svg";
-import ProductItem from "../../components/ProductItem";
+import ProductItem from "./ProductItem/ProductItem";
 
 const Collection = () => {
   const [subCategories, setSubCategories] = useState([]);
@@ -55,12 +55,12 @@ const Collection = () => {
               {subCategory}
             </ListItem>
           ))}
-          <Scroll src={ScrollIcon} />
+          <Shape2 src={ShapeIcon4} />
         </SubCategories>
       </Categories>
       <Products>
         {productPhoto.map((o) =>
-          o.map((item, index) => {
+          o.map((item) => {
             return (
               <ProductImageWrapper
                 onClick={() => {
@@ -91,20 +91,24 @@ const Collection = () => {
 
 const CollectionSection = styled.section`
   width: 100%;
-  height: 80vh;
+  height: 100vh;
   background: #141c1f;
   display: flex;
   position: relative;
+  @media screen and (min-width: 830px) {
+    height: 80vh;
+  }
 `;
 
 const Categories = styled.div`
   position: relative;
   width: 50%;
-  height: 80vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   @media screen and (min-width: 830px) {
     flex-direction: row;
+    height: 80vh;
   }
 `;
 
@@ -117,14 +121,14 @@ const MainCategories = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  font-size: 1.4rem;
+  font-size: ${(props) => props.theme.fontS};
   padding: 1rem;
   @media screen and (min-width: 830px) {
     height: 80vh;
-    font-size: 1.8rem;
+    font-size: ${(props) => props.theme.fontM};
   }
   @media screen and (min-width: 1200px) {
-    font-size: 2.4rem;
+    font-size: ${(props) => props.theme.fontXL};
   }
 `;
 
@@ -133,6 +137,16 @@ const Shape = styled.img`
   top: 1rem;
   right: 1rem;
   width: 3rem;
+`;
+
+const Shape2 = styled.img`
+  position: absolute;
+  right: 0;
+  bottom: 1rem;
+  z-index: 5;
+  @media screen and (min-width: 830px) {
+    height: 3rem;
+  }
 `;
 
 const Arrow = styled.img`
@@ -158,21 +172,15 @@ const SubCategories = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  font-size: 1.2rem;
   padding: 1rem;
   @media screen and (min-width: 830px) {
     height: 80vh;
-    font-size: 1.4rem;
-  }
-  @media screen and (min-width: 1200px) {
-    font-size: 1.8rem;
   }
 `;
 
 const ListItem = styled.button`
   background: none;
   border: none;
-  font-size: 1.8rem;
   cursor: pointer;
   position: relative;
   width: fit-content;
@@ -194,19 +202,8 @@ const ListItem = styled.button`
       background: rgba(255, 255, 255, 0.3);
     }
   }
-  @media screen and (min-width: 830px) {
-  }
   @media screen and (min-width: 1200px) {
-  }
-`;
-
-const Scroll = styled.img`
-  position: absolute;
-  right: 0;
-  bottom: 1rem;
-  z-index: 5;
-  @media screen and (min-width: 830px) {
-    height: 8rem;
+    font-size: ${(props) => props.theme.fontM};
   }
 `;
 
@@ -231,13 +228,15 @@ const Logo = styled.img`
 
 const Products = styled.div`
   width: 50%;
-  height: 80vh;
+  height: 100vh;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
+  background: #1b2327;
   @media screen and (min-width: 830px) {
     flex-direction: row;
     flex-wrap: wrap;
+    height: 80vh;
   }
 `;
 
@@ -255,7 +254,7 @@ const ProductImage = styled.img`
 
 const ProductImageWrapper = styled.button`
   width: 100%;
-  height: 50%;
+  min-height: 80%;
   object-fit: cover;
   z-index: 8;
   margin-bottom: 0.5rem;

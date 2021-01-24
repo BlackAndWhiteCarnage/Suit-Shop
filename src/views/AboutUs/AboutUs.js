@@ -2,36 +2,41 @@ import React from "react";
 import styled from "styled-components";
 import AboutUsImage from "./AboutUs.jpg";
 import TriangleImage from "./Triangle.svg";
-import ScrollIcon from "../../Assets/ScrollIcon.svg";
 import LogoImage from "../../Assets/Logo.svg";
 import XIcon from "../../Assets/XIcon.svg";
 import WavesIcon from "../../Assets/WavesIcon.svg";
+import ShapeIcon3 from "../../Assets/ShapeIcon3.svg";
 
 const AboutUs = () => {
   return (
-    <AboutUsSection id="About Us">
-      <AboutUsSectionImage src={AboutUsImage} alt="Man looking down the suit" />
-      <AboutUsSquare>
-        <X src={XIcon} />
-        <Waves src={WavesIcon} />
-        <Scroll src={ScrollIcon} />
-      </AboutUsSquare>
-      <AboutUsSectionWrapper>
-        <Header>
-          Who are we?
-          <Logo src={LogoImage} />
-        </Header>
-        <Article>
-          We are the small company called Premium. When we started our journay
-          My first purpose was to dress every man in town in the best suit they
-          ever had. After a while the news about best suits in the town
-          spread... Now we are making best suits in whole state, they are
-          expensive but made of best of the best materials. And thats why we are
-          called Premium.
-        </Article>
-      </AboutUsSectionWrapper>
-      <Triangle src={TriangleImage} />
-    </AboutUsSection>
+    <>
+      <AboutUsSection id="About Us">
+        <AboutUsSectionImage
+          src={AboutUsImage}
+          alt="Man looking down the suit"
+        />
+        <AboutUsSquare>
+          <X src={XIcon} />
+          <Waves src={WavesIcon} />
+          <Shape src={ShapeIcon3} />
+        </AboutUsSquare>
+        <AboutUsSectionWrapper>
+          <Header>
+            Who are we?
+            <Logo src={LogoImage} />
+          </Header>
+          <Article>
+            We are the small company called Premium. When we started our journay
+            My first purpose was to dress every man in town in the best suit
+            they ever had. After a while the news about best suits in the town
+            spread... Now we are making best suits in whole state, they are
+            expensive but made of best of the best materials. And thats why we
+            are called Premium.
+          </Article>
+        </AboutUsSectionWrapper>
+        <Triangle src={TriangleImage} />
+      </AboutUsSection>
+    </>
   );
 };
 
@@ -76,27 +81,27 @@ const AboutUsSectionWrapper = styled.div`
 
 const Header = styled.h1`
   position: relative;
-  font-size: 1.8rem;
+  font-size: ${(props) => props.theme.fontM};
   margin: 2rem;
   @media screen and (min-width: 830px) {
-    font-size: 2.4rem;
+    font-size: ${(props) => props.theme.fontXL};
     margin: 5rem;
   }
   @media screen and (min-width: 1200px) {
-    font-size: 3.6rem;
+    font-size: ${(props) => props.theme.fontXXL};
     margin: 0 15rem;
   }
 `;
 
 const Article = styled.article`
-  font-size: 1.2rem;
+  font-size: ${(props) => props.theme.fontS};
   z-index: 10;
   line-height: 2rem;
   margin: 2rem;
   width: 70%;
   @media screen and (min-width: 830px) {
     width: 70%;
-    font-size: 1.8rem;
+    font-size: ${(props) => props.theme.fontM};
     line-height: 3rem;
     margin: 5rem;
   }
@@ -117,7 +122,7 @@ const Triangle = styled.img`
   }
 `;
 
-const Scroll = styled.img`
+const Shape = styled.img`
   position: absolute;
   right: 0;
   bottom: 0;

@@ -1,48 +1,56 @@
 import GlobalStyles from "./components/GlobalStyles";
 import { Parallax } from "react-parallax";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import Home from "./views/Home/Home";
 import AboutUs from "./views/AboutUs/AboutUs";
 import Collection from "./views/Collection/Collection";
 import Contact from "./views/Contact/Contact";
+import Footer from "./views/Footer/Footer";
 import Suits1 from "./Assets/Suits1.jpg";
 import Suits2 from "./Assets/Suits2.jpg";
 import Suits3 from "./Assets/Suits3.jpg";
+
+//THEME
+const theme = {
+  primary: "#EAEAEA",
+  secondary: "#E40000",
+  bgBrighter: "#1B2327",
+  bgDarker: "#141C1F",
+  fontS: "1.2rem",
+  fontM: "1.8rem",
+  fontXL: "2.4rem",
+  fontXXL: "3.6rem",
+};
 
 function App() {
   return (
     <div className="App">
       <GlobalStyles />
-      <Home />
-      <Parallax bgImage={Suits2} strength={600}>
-        <BlackLayer>
-          <SectionHeader>O nas</SectionHeader>
-        </BlackLayer>
-      </Parallax>
-      <AboutUs />
-      <Parallax bgImage={Suits1} strength={600}>
-        <BlackLayer>
-          <SectionHeader>Kolekcja</SectionHeader>
-        </BlackLayer>
-      </Parallax>
-      <Collection />
-      <Parallax bgImage={Suits3} strength={600}>
-        <BlackLayer>
-          <SectionHeader>Kontakt</SectionHeader>
-        </BlackLayer>
-      </Parallax>
-      <Contact />
+      <ThemeProvider theme={theme}>
+        <Home />
+        <Parallax bgImage={Suits2} strength={600}>
+          <BlackLayer>
+            <SectionHeader>O nas</SectionHeader>
+          </BlackLayer>
+        </Parallax>
+        <AboutUs />
+        <Parallax bgImage={Suits1} strength={600}>
+          <BlackLayer>
+            <SectionHeader>Kolekcja</SectionHeader>
+          </BlackLayer>
+        </Parallax>
+        <Collection />
+        <Parallax bgImage={Suits3} strength={600}>
+          <BlackLayer>
+            <SectionHeader>Kontakt</SectionHeader>
+          </BlackLayer>
+        </Parallax>
+        <Contact />
+        <Footer />
+      </ThemeProvider>
     </div>
   );
 }
-
-// const SectionImage = styled.img`
-//   position: absolute;
-//   width: 100%;
-//   height: 100%;
-//   object-fit: cover;
-//   z-index: -1;
-// `;
 
 const BlackLayer = styled.div`
   position: relative;
@@ -50,8 +58,11 @@ const BlackLayer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 30rem;
+  height: 50rem;
   background: rgba(0, 0, 0, 0.7);
+  @media screen and (max-width: 620px) {
+    height: 15rem;
+  }
 `;
 
 const SectionHeader = styled.h1`

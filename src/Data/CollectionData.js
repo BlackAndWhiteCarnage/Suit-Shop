@@ -134,6 +134,9 @@ export const CollectionData = [
       {
         category: "Garnitury",
         price: 120.9,
+        size: "L",
+        description:
+          "Lozanna Uno Z to jednorzędowy garnitur marki Vistula w odcieniach koloru granatowego, w drobną kratę. Został wykonany z wysokiej jakości wełny. Marynarka jest mocno dopasowana do sylwetki. Zapinana jest na dwa guziki, z tyłu posiada dwa rozcięcia. Ma szerokie klapy w szpic, kieszenie boczne z patkami, na piersi kieszonkę z listewką. Spodnie bez zakładek, o dopasowanym kroju, z zaprasowanym kantem, z angielskimi kieszeniami. Idealny garnitur na specjalne okazje.",
         productName: "Dopasowany garnitur z wełny z delikatną strukturą",
         productPhotos: [Suit21, Suit22, Suit23],
       },

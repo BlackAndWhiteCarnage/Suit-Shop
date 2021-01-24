@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ContactImage from "./Contact.jpg";
 import SquareImage from "../../Assets/SquareImage.svg";
 import LogoImage from "../../Assets/Logo.svg";
+import Button from "../../components/Button";
 
 const Contact = () => {
   return (
@@ -20,7 +21,7 @@ const Contact = () => {
           <Input id="Email" type="text" />
           <Label htmlFor="Message">Message</Label>
           <TextArea id="Message" type="text" />
-          <Button>Submit</Button>
+          <Button text={"Submit"} />
         </Form>
       </BlackLayer>
     </ContactSection>
@@ -86,17 +87,14 @@ const Form = styled.form`
 
 const Label = styled.label`
   width: 80%;
-  font-size: 1.2rem;
+  font-size: ${(props) => props.theme.fontM};
   margin: 1rem 0 2rem 0;
-  @media screen and (min-width: 830px) {
-    font-size: 1.8rem;
-  }
 `;
 
 const Input = styled.input`
   width: 80%;
   height: 2rem;
-  font-size: 1.2rem;
+  font-size: ${(props) => props.theme.fontM};
   color: white;
   border: none;
   background: rgba(255, 255, 255, 0.2);
@@ -105,19 +103,18 @@ const Input = styled.input`
     background: rgba(255, 255, 255, 0.5);
   }
   @media screen and (min-width: 830px) {
-    font-size: 1.8rem;
     height: 3rem;
   }
   @media screen and (min-width: 830px) {
     height: 4rem;
-    font-size: 2.4rem;
+    font-size: ${(props) => props.theme.fontXL};
   }
 `;
 
 const TextArea = styled.textarea`
   width: 80%;
   height: 10rem;
-  font-size: 1.2rem;
+  font-size: ${(props) => props.theme.fontS};
   color: white;
   border: none;
   resize: none;
@@ -127,46 +124,11 @@ const TextArea = styled.textarea`
     background: rgba(255, 255, 255, 0.5);
   }
   @media screen and (min-width: 830px) {
-    font-size: 1.8rem;
+    font-size: ${(props) => props.theme.fontM};
   }
   @media screen and (min-width: 830px) {
     height: 15rem;
-    font-size: 2.4rem;
-  }
-`;
-
-const Button = styled.button`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  border: none;
-  background: none;
-  color: white;
-  font-family: "Libre Baskerville", serif;
-  font-weight: bold;
-  &::before {
-    content: "";
-    position: absolute;
-    left: -0.5rem;
-    width: 0.5rem;
-    height: 100%;
-    background: rgba(255, 255, 255, 1);
-    transition: 0.5s ease;
-  }
-  &:hover,
-  :focus {
-    outline: none;
-    &::before {
-      transition: 0.5s ease;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.3);
-    }
-  }
-  @media screen and (min-width: 830px) {
-    font-size: 1.8rem;
-  }
-  @media screen and (min-width: 830px) {
-    font-size: 2.4rem;
+    font-size: ${(props) => props.theme.fontXL};
   }
 `;
 
@@ -175,10 +137,10 @@ const Header = styled.h2`
   top: 0;
   left: 0;
   @media screen and (min-width: 830px) {
-    font-size: 1.8rem;
+    font-size: ${(props) => props.theme.fontM};
   }
   @media screen and (min-width: 830px) {
-    font-size: 2.4rem;
+    font-size: ${(props) => props.theme.fontXL};
   }
 `;
 

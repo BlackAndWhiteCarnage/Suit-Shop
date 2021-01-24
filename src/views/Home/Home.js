@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import HomeImage from "./Home.jpg";
 import LogoImage from "../../Assets/Logo.svg";
@@ -9,7 +9,7 @@ import { Parallax } from "react-parallax";
 
 const Home = () => {
   return (
-    <Parallax
+    <ParallaxImg
       bgImage={HomeImage}
       bgImageAlt="Goodlooking man in the suit"
       strength={400}
@@ -54,7 +54,7 @@ const Home = () => {
           <Scroll src={ScrollIcon} />
         </HomeSectionWrapper>
       </HomeSection>
-    </Parallax>
+    </ParallaxImg>
   );
 };
 
@@ -65,14 +65,13 @@ const HomeSection = styled.section`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 `;
 
-const HomeSectionImage = styled.img`
-  position: absolute;
+const ParallaxImg = styled(Parallax)`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   object-fit: cover;
-  z-index: -1;
 `;
 
 const WhiteLayer = styled.div`
@@ -157,17 +156,17 @@ const Quote = styled.q`
   bottom: 0;
   left: 0;
   width: 11rem;
-  font-size: 1.2rem;
+  font-size: ${(props) => props.theme.fontS};
   font-weight: 400;
   @media screen and (min-width: 830px) {
-    font-size: 1.8rem;
+    font-size: ${(props) => props.theme.fontM};
     width: 20rem;
   }
   @media screen and (min-width: 1200px) {
     left: 85%;
     top: 60%;
     transform: translate(-85%, -50%);
-    font-size: 3.6rem;
+    font-size: ${(props) => props.theme.fontXXL};
     width: 40rem;
   }
 `;
@@ -177,10 +176,10 @@ const List = styled.ul`
   flex-direction: column;
   justify-content: space-around;
   list-style: none;
-  font-size: 1.2rem;
+  font-size: ${(props) => props.theme.fontS};
   height: 40%;
   @media screen and (min-width: 620px) {
-    font-size: 1.8rem;
+    font-size: ${(props) => props.theme.fontM};
     width: 20rem;
   }
 `;
