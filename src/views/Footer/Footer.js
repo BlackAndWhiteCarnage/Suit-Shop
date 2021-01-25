@@ -5,11 +5,12 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <p>
-        Zdjęcia produktów zostały użyte w projekcie wyłącznie w celach
-        poglądowych. Są własnością firmy{" "}
+        Zdjęcia produktów są własnością firmy{" "}
         <Link target="_blank" href="https://vistula.pl/">
           Vistula.pl
-        </Link>
+        </Link>{" "}
+        zostały użyte w projekcie wyłącznie w celu poglądowym, jak mogłaby
+        wyglądać strona.
       </p>
     </FooterWrapper>
   );
@@ -17,9 +18,9 @@ const Footer = () => {
 
 const FooterWrapper = styled.div`
   width: 100%;
-  height: 10rem;
+  height: 5rem;
   background: #141c1f;
-  color: #e40000;
+  color: #eaeaea;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,15 +28,12 @@ const FooterWrapper = styled.div`
     margin: 1rem;
   }
   @media screen and (min-width: 830px) {
-    font-size: 1.8rem;
-  }
-  @media screen and (min-width: 830px) {
-    font-size: 2.4rem;
+    font-size: ${(props) => props.theme.fontM};
   }
 `;
 
 const Link = styled.a`
-  color: #eaeaea;
+  color: #e40000;
   text-decoration: none;
 `;
 

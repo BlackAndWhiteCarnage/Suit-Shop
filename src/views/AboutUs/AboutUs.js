@@ -9,34 +9,29 @@ import ShapeIcon3 from "../../Assets/ShapeIcon3.svg";
 
 const AboutUs = () => {
   return (
-    <>
-      <AboutUsSection id="About Us">
-        <AboutUsSectionImage
-          src={AboutUsImage}
-          alt="Man looking down the suit"
-        />
-        <AboutUsSquare>
-          <X src={XIcon} />
-          <Waves src={WavesIcon} />
-          <Shape src={ShapeIcon3} />
-        </AboutUsSquare>
-        <AboutUsSectionWrapper>
-          <Header>
-            Who are we?
-            <Logo src={LogoImage} />
-          </Header>
-          <Article>
-            We are the small company called Premium. When we started our journay
-            My first purpose was to dress every man in town in the best suit
-            they ever had. After a while the news about best suits in the town
-            spread... Now we are making best suits in whole state, they are
-            expensive but made of best of the best materials. And thats why we
-            are called Premium.
-          </Article>
-        </AboutUsSectionWrapper>
-        <Triangle src={TriangleImage} />
-      </AboutUsSection>
-    </>
+    <AboutUsSection id="About Us">
+      <AboutUsSectionImage src={AboutUsImage} alt="Man looking down the suit" />
+      <AboutUsSquare>
+        <X src={XIcon} />
+        <Waves src={WavesIcon} />
+        <Shape src={ShapeIcon3} />
+      </AboutUsSquare>
+      <AboutUsSectionWrapper>
+        <Header>
+          Who are we?
+          <Logo src={LogoImage} />
+        </Header>
+        <Article>
+          We are the small company called Premium. When we started our journay
+          My first purpose was to dress every man in town in the best suit they
+          ever had. After a while the news about best suits in the town
+          spread... Now we are making best suits in whole state, they are
+          expensive but made of best of the best materials. And thats why we are
+          called Premium.
+        </Article>
+      </AboutUsSectionWrapper>
+      <Triangle src={TriangleImage} />
+    </AboutUsSection>
   );
 };
 
@@ -76,20 +71,19 @@ const AboutUsSectionWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   background: #141c1f;
-  width: 70%;
 `;
 
 const Header = styled.h1`
   position: relative;
   font-size: ${(props) => props.theme.fontM};
   margin: 2rem;
-  @media screen and (min-width: 830px) {
+  @media screen and (min-width: 620px) {
     font-size: ${(props) => props.theme.fontXL};
-    margin: 5rem;
+    margin: 0 0 0 5rem;
   }
   @media screen and (min-width: 1200px) {
     font-size: ${(props) => props.theme.fontXXL};
-    margin: 0 15rem;
+    margin: 10rem 0 0 15rem;
   }
 `;
 
@@ -99,7 +93,7 @@ const Article = styled.article`
   line-height: 2rem;
   margin: 2rem;
   width: 70%;
-  @media screen and (min-width: 830px) {
+  @media screen and (min-width: 620px) {
     width: 70%;
     font-size: ${(props) => props.theme.fontM};
     line-height: 3rem;
@@ -107,7 +101,8 @@ const Article = styled.article`
   }
   @media screen and (min-width: 1200px) {
     width: 60%;
-    margin: 15rem;
+    height: 50%;
+    margin: 5rem 0 0 15rem;
     line-height: 4rem;
   }
 `;

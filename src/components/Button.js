@@ -15,6 +15,7 @@ const StyledButton = styled.button`
   cursor: pointer;
   font-family: "Libre Baskerville", serif;
   font-weight: bold;
+  font-size: ${(props) => props.theme.fontS};
   &::before {
     content: "";
     position: absolute;
@@ -33,11 +34,8 @@ const StyledButton = styled.button`
       background: rgba(255, 255, 255, 0.3);
     }
   }
-  @media screen and (min-width: 830px) {
-    font-size: 1.8rem;
-  }
-  @media screen and (min-width: 830px) {
-    font-size: 2.4rem;
+  @media screen and (min-width: 620px) {
+    font-size: ${(props) => props.theme.fontM};
   }
 `;
 

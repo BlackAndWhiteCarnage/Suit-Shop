@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import SliderArrowImage from "../../../Assets/SliderArrow.svg";
+import TriangleImage from "../../../Assets/Triangle.svg";
 
 const OtherProducts = ({
   productPhoto,
@@ -39,27 +40,31 @@ const OtherProducts = ({
         ))
       )}
       <NextArrow src={SliderArrowImage} onClick={nextSlide} />
+      <Triangle src={TriangleImage} />
     </OtherProductsWrapper>
   );
 };
 
 const OtherProductsWrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 35%;
+  height: 40%;
+  width: 100%;
   @media screen and (min-width: 680px) {
     width: 100%;
     height: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-self: center;
-    width: 40%;
-    height: 50%;
-    margin-bottom: 1rem;
   }
+`;
+
+const Triangle = styled.img`
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  opacity: 0.8;
 `;
 
 const OtherProductImage = styled.img`
@@ -69,6 +74,12 @@ const OtherProductImage = styled.img`
     width: 30%;
     height: 80%;
     transition: 1s ease;
+    @media screen and (min-width: 680px) {
+      width: 40%;
+    }
+    @media screen and (min-width: 1200px) {
+      width: 25%;
+    }
   }
   &.hide {
     width: 0;
@@ -77,51 +88,29 @@ const OtherProductImage = styled.img`
     position: absolute;
     pointer-events: none;
   }
-  @media screen and (min-width: 680px) {
-    object-fit: cover;
-    z-index: 8;
-    cursor: pointer;
-    margin: 3rem;
-    transition: 1s ease;
-    &.show {
-      z-index: 20;
-      width: 60%;
-      height: 100%;
-      transition: 1s ease;
-      &:hover {
-        transform: scale(0.98);
-        transition: 0.5s ease;
-      }
-    }
-    &.hide {
-      transition: 0.5s ease;
-      opacity: 0;
-      position: absolute;
-      pointer-events: none;
-    }
-  }
-
-  @media screen and (min-width: 830px) {
-    height: 80%;
-    width: 49%;
-    margin-left: 1%;
-  }
 `;
 
 const NextArrow = styled.img`
   position: absolute;
   cursor: pointer;
-  right: 0;
+  right: 20%;
   z-index: 200;
-  width: 3rem;
+  width: 4rem;
+  @media screen and (min-width: 680px) {
+    right: 10%;
+  }
 `;
+
 const PrevArrow = styled.img`
   position: absolute;
   cursor: pointer;
-  left: -1rem;
+  left: 20%;
   z-index: 200;
-  width: 3rem;
+  width: 4rem;
   transform: rotate(-180deg);
+  @media screen and (min-width: 680px) {
+    left: 10%;
+  }
 `;
 
 export default OtherProducts;

@@ -103,7 +103,6 @@ const HomeSectionWrapper = styled.div`
   transform: translate(-50%, -50%);
   width: 80%;
   height: 90%;
-  z-index: 100;
   transition: 1s ease;
   @media screen and (min-width: 830px) {
     width: 80%;
@@ -114,7 +113,7 @@ const Logo = styled.img`
   position: absolute;
   left: 0;
   top: 0;
-  @media screen and (min-width: 830px) {
+  @media screen and (min-width: 620px) {
     width: 4rem;
   }
 `;
@@ -124,7 +123,7 @@ const SquareTopRight = styled.img`
   position: absolute;
   right: 0;
   top: 0;
-  @media screen and (min-width: 830px) {
+  @media screen and (min-width: 620px) {
     height: 4rem;
   }
 `;
@@ -146,7 +145,7 @@ const Scroll = styled.img`
   position: absolute;
   right: 0;
   bottom: 0;
-  @media screen and (min-width: 830px) {
+  @media screen and (min-width: 620px) {
     height: 10rem;
   }
 `;
@@ -158,7 +157,7 @@ const Quote = styled.q`
   width: 11rem;
   font-size: ${(props) => props.theme.fontS};
   font-weight: 400;
-  @media screen and (min-width: 830px) {
+  @media screen and (min-width: 620px) {
     font-size: ${(props) => props.theme.fontM};
     width: 20rem;
   }

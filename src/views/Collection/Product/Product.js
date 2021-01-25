@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import ProductInfo from "./ProductInfo";
 import OtherProducts from "./OtherProducts";
@@ -84,7 +84,7 @@ const ProductImagesWrapper = styled.div`
   height: 20%;
   background-color: green;
   @media screen and (min-width: 680px) {
-    width: 15%;
+    width: 30%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -94,6 +94,9 @@ const ProductImagesWrapper = styled.div`
       width: 60%;
       height: 31%;
     }
+  }
+  @media screen and (min-width: 1200px) {
+    width: 15%;
   }
 `;
 
@@ -115,7 +118,9 @@ const BigImage = styled.img`
 
 const ProductsWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
   @media screen and (min-width: 680px) {
     position: relative;
     display: flex;

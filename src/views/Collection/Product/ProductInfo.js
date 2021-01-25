@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Button from "../../../components/Button";
 import BackIcon from "../../../Assets/BackIcon.svg";
 import ArrowIcon from "../../../Assets/Arrow.svg";
+import LogoIcon from "../../../Assets/Logo.svg";
 
 const ProductInfo = ({
   productItem,
@@ -15,8 +16,14 @@ const ProductInfo = ({
   const toggleDescription = () => setDescription(!description);
   return (
     <ProductInfoWrapper>
+      <Icon
+        src={BackIcon}
+        onClick={() => {
+          setToggleProduct(false);
+          setBigImage();
+        }}
+      />
       <Info>
-        <ProductCategory>{productItem.category}</ProductCategory>
         <ProductName>{productItem.productName}</ProductName>
         <ProductSize>
           Rozmair: {productItem.size}
@@ -28,15 +35,9 @@ const ProductInfo = ({
             {productItem.description}
           </ProductDescription>
         </DescriptionButton>
-        <Icon
-          src={BackIcon}
-          onClick={() => {
-            setToggleProduct(false);
-            setBigImage();
-          }}
-        />
         <ProductPrice>{productItem.price}$</ProductPrice>
         <Button text={"Dodaj do koszyka"} />
+        <Logo src={LogoIcon} alt="Logo Image" />
       </Info>
       <ProductImagesWrapper2>
         {productItem.productPhotos.map((photo) => (
@@ -51,43 +52,49 @@ const Info = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
   width: 90%;
-  height: 50%;
-  margin-top: 2rem;
+  height: 60%;
   @media screen and (min-width: 680px) {
-    display: block;
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, -10%);
-    width: 80%;
-    height: 40%;
+    height: 60%;
+    justify-content: flex-start;
   }
-`;
-
-const ProductCategory = styled.h3`
-  width: 100%;
-  font-size: ${(props) => props.theme.fontS};
-  margin-bottom: 3rem;
 `;
 
 const ProductName = styled.h2`
   width: 100%;
   font-size: ${(props) => props.theme.fontL};
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+  @media screen and (min-width: 680px) {
+    font-size: ${(props) => props.theme.fontXL};
+    margin-bottom: 4rem;
+  }
 `;
 
 const Arrow = styled.img`
-  width: 2rem;
-  margin-left: 3rem;
+  width: 1.5rem;
+  margin-left: 1rem;
+`;
+
+const Logo = styled.img`
+  position: absolute;
+  left: 50%;
+  bottom: -50%;
+  transform: translate(-50%, 50%);
+  width: 40rem;
+  pointer-events: none;
+  opacity: 0.05;
 `;
 
 const ProductSize = styled.h4`
   width: 100%;
   font-size: ${(props) => props.theme.fontS};
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
+  @media screen and (min-width: 680px) {
+    font-size: ${(props) => props.theme.fontM};
+    margin-bottom: 2rem;
+  }
 `;
 
 const ProductDescription = styled.p`
@@ -105,27 +112,34 @@ const ProductDescription = styled.p`
     opacity: 1;
     margin-top: 1rem;
     background: #1b2327;
+    border-left: 3px solid #e40000;
+    border-right: 3px solid #e40000;
   }
 `;
 
 const ProductImagesWrapper2 = styled.div`
-  height: 50%;
+  height: 60%;
+  width: 90%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  border-bottom: 3px solid #e40000;
+  justify-content: space-between;
+  border-bottom: 2px solid #e40000;
   img {
-    width: 30%;
+    width: 25%;
     height: 80%;
-    margin: 0.5rem;
   }
   @media screen and (min-width: 680px) {
     display: none;
   }
+  @media screen and (height: 720px) {
+    height: 90%;
+    width: 80%;
+  }
 `;
 
 const ProductInfoWrapper = styled.div`
-  height: 65%;
+  position: relative;
+  height: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -138,22 +152,22 @@ const ProductInfoWrapper = styled.div`
 
 const Icon = styled.img`
   position: absolute;
-  top: 0;
-  right: 0;
+  z-index: 200;
+  top: 1rem;
+  right: 1rem;
+  width: 3rem;
   cursor: pointer;
+  @media screen and (min-width: 680px) {
+    width: 4rem;
+  }
 `;
 
 const ProductPrice = styled.p`
   color: #e40000;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   font-size: ${(props) => props.theme.fontM};
-  @media screen and (min-width: 680px) {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-  @media screen and (min-width: 830px) {
-    font-size: ${(props) => props.theme.fontM};
-  }
   @media screen and (min-width: 830px) {
     font-size: ${(props) => props.theme.fontXL};
   }
@@ -166,6 +180,9 @@ const DescriptionButton = styled.button`
   font-family: "Libre Baskerville", serif;
   font-weight: bold;
   font-size: ${(props) => props.theme.fontS};
+  @media screen and (min-width: 680px) {
+    font-size: ${(props) => props.theme.fontM};
+  }
 `;
 
 const ProductImage = styled.img`

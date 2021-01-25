@@ -5,7 +5,7 @@ import LogoImage from "../../Assets/Logo.svg";
 import ShapeIcon from "../../Assets/ShapeIcon.svg";
 import ShapeIcon4 from "../../Assets/ShapeIcon4.svg";
 import ArrowIcon from "../../Assets/Arrow.svg";
-import ProductItem from "./ProductItem/ProductItem";
+import ProductItem from "./Product/Product";
 
 const Collection = () => {
   const [subCategories, setSubCategories] = useState([]);
@@ -35,6 +35,7 @@ const Collection = () => {
   return (
     <CollectionSection id="Collection">
       <Categories>
+        {/* MAIN CATEGORIES */}
         <MainCategories>
           <Shape src={ShapeIcon} />
           {CollectionData.map((item) => (
@@ -48,6 +49,7 @@ const Collection = () => {
           ))}
           <Arrow src={ArrowIcon} />
         </MainCategories>
+        {/* SUB CATEGORIES */}
         <SubCategories>
           <Logo src={LogoImage} />
           {subCategories.map((subCategory) => (
@@ -58,7 +60,8 @@ const Collection = () => {
           <Shape2 src={ShapeIcon4} />
         </SubCategories>
       </Categories>
-      <Products>
+      {/* PRODUCTS IMAGES */}
+      <ProductsImages>
         {productPhoto.map((o) =>
           o.map((item) => {
             return (
@@ -74,7 +77,8 @@ const Collection = () => {
             );
           })
         )}
-      </Products>
+      </ProductsImages>
+      {/* PRODUCT CHOOSEN FROM IMAGES  */}
       <ProductItem
         toggleProduct={toggleProduct}
         setToggleProduct={setToggleProduct}
@@ -226,7 +230,7 @@ const Logo = styled.img`
   }
 `;
 
-const Products = styled.div`
+const ProductsImages = styled.div`
   width: 50%;
   height: 100vh;
   overflow-y: scroll;

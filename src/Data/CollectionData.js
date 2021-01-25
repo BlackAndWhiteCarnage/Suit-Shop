@@ -24,8 +24,8 @@ import Waistcoath12 from "./Waistcoath1-2.jpg";
 import Waistcoath13 from "./Waistcoath1-3.jpg";
 //LeatherJacket
 import LeatherJacket11 from "./LeatherJacket1-1.jpg";
-import LeatherJacket12 from "./LeatherJacket1-1.jpg";
-import LeatherJacket13 from "./LeatherJacket1-1.jpg";
+import LeatherJacket12 from "./LeatherJacket1-2.jpg";
+import LeatherJacket13 from "./LeatherJacket1-3.jpg";
 //Suit 1
 import Suit11 from "./Suit1-1.jpg";
 import Suit12 from "./Suit1-2.jpg";

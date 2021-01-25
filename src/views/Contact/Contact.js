@@ -87,8 +87,11 @@ const Form = styled.form`
 
 const Label = styled.label`
   width: 80%;
-  font-size: ${(props) => props.theme.fontM};
   margin: 1rem 0 2rem 0;
+  font-size: ${(props) => props.theme.fontS};
+  @media screen and (min-width: 620px) {
+    font-size: ${(props) => props.theme.fontM};
+  }
 `;
 
 const Input = styled.input`
@@ -136,10 +139,8 @@ const Header = styled.h2`
   position: absolute;
   top: 0;
   left: 0;
-  @media screen and (min-width: 830px) {
-    font-size: ${(props) => props.theme.fontM};
-  }
-  @media screen and (min-width: 830px) {
+  font-size: ${(props) => props.theme.fontM};
+  @media screen and (min-width: 620px) {
     font-size: ${(props) => props.theme.fontXL};
   }
 `;
@@ -148,7 +149,7 @@ const SquareTopRight = styled.img`
   position: absolute;
   top: 0;
   right: 0;
-  @media screen and (min-width: 830px) {
+  @media screen and (min-width: 620px) {
     width: 4rem;
   }
 `;
@@ -158,7 +159,7 @@ const SquareBottomLeft = styled.img`
   bottom: 0;
   left: 0;
   transform: rotate(180deg);
-  @media screen and (min-width: 830px) {
+  @media screen and (min-width: 620px) {
     width: 4rem;
   }
 `;
