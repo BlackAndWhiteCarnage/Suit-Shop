@@ -55,15 +55,15 @@ export const CollectionData = [
     products: [
       {
         category: "Kurtki Jeansowe",
-        price: 210.1,
-        productName: "Jeansowa kurtka",
-        productPhotos: [JeansJacket21, JeansJacket22, JeansJacket23],
-      },
-      {
-        category: "Kurtki Jeansowe",
         price: 340.2,
         productName: "Jeansowa kurtka z naszywkami",
         productPhotos: [JeansJacket11, JeansJacket12, JeansJacket13],
+      },
+      {
+        category: "Kurtki Jeansowe",
+        price: 210.1,
+        productName: "Jeansowa kurtka",
+        productPhotos: [JeansJacket21, JeansJacket22, JeansJacket23],
       },
       {
         category: "Kurtki Jeansowe",

@@ -10,6 +10,7 @@ const ProductInfo = ({
   setToggleProduct,
   setBigImage,
   bigImageHandler,
+  showMobileBigImage,
 }) => {
   const [description, setDescription] = useState(false);
 
@@ -41,7 +42,11 @@ const ProductInfo = ({
       </Info>
       <ProductImagesWrapper2>
         {productItem.productPhotos.map((photo) => (
-          <ProductImage src={photo} onClick={() => bigImageHandler(photo)} />
+          <ProductImage
+            className={showMobileBigImage ? "show" : "hide"}
+            src={photo}
+            onClick={() => bigImageHandler(photo)}
+          />
         ))}
       </ProductImagesWrapper2>
     </ProductInfoWrapper>

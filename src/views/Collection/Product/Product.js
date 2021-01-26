@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import ProductInfo from "./ProductInfo";
 import OtherProducts from "./OtherProducts";
@@ -12,6 +12,8 @@ const ProductItem = ({
   bigImage,
   productPhoto,
   passItemHandler,
+  showBigImage,
+  setShowBigImage,
 }) => {
   return (
     <>
@@ -43,8 +45,12 @@ const ProductItem = ({
             ))}
           </ProductImagesWrapper>
           {/* HERO PRODUCT IMAGE */}
-          <BigImageWrapper>
-            <BigImage src={bigImage} />
+          <BigImageWrapper className={showBigImage ? "show" : "hide"}>
+            <BigImage
+              className={showBigImage ? "show" : "hide"}
+              src={bigImage}
+              onClick={() => setShowBigImage(!showBigImage)}
+            />
           </BigImageWrapper>
         </ProductItemWrapper>
       )}
@@ -53,9 +59,9 @@ const ProductItem = ({
 };
 
 const ProductItemWrapper = styled.div`
-  position: fixed;
+  position: absolute;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: #141c1f;
   z-index: 10;
   display: flex;
@@ -96,7 +102,7 @@ const ProductImagesWrapper = styled.div`
     }
   }
   @media screen and (min-width: 1200px) {
-    width: 15%;
+    width: 10%;
   }
 `;
 
@@ -105,8 +111,20 @@ const BigImageWrapper = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  @media screen and (max-width: 680px) {
-    display: none;
+  &.show {
+    position: fixed;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  @media screen and (min-width: 1200px) {
+    width: 20%;
   }
 `;
 
@@ -114,6 +132,12 @@ const BigImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  cursor: pointer;
+  transition: 0.5s ease;
+  &.show {
+    width: auto;
+    height: 100vh;
+  }
 `;
 
 const ProductsWrapper = styled.div`
@@ -125,7 +149,7 @@ const ProductsWrapper = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 70%;
     height: 100%;
   }
 `;
@@ -150,24 +174,5 @@ const ProductImage = styled.img`
     width: 32%;
   }
 `;
-
-// const Logo = styled.img`
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   width: 15rem;
-//   opacity: 0.04;
-//   pointer-events: none;
-//   z-index: 5;
-//   @media screen and (min-width: 830px) {
-//     width: 20rem;
-//     bottom: -10rem;
-//   }
-//   @media screen and (min-width: 1200px) {
-//     width: 50rem;
-//     bottom: -30rem;
-//   }
-// `;
 
 export default ProductItem;

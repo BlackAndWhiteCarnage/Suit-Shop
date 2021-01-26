@@ -56,6 +56,10 @@ const OtherProductsWrapper = styled.div`
     width: 100%;
     height: 100%;
   }
+  @media screen and (min-width: 1200px) {
+    width: 100%;
+    min-height: 60%;
+  }
 `;
 
 const Triangle = styled.img`
@@ -69,6 +73,7 @@ const Triangle = styled.img`
 
 const OtherProductImage = styled.img`
   object-fit: cover;
+  cursor: pointer;
   &.show {
     z-index: 20;
     width: 30%;
@@ -78,7 +83,8 @@ const OtherProductImage = styled.img`
       width: 40%;
     }
     @media screen and (min-width: 1200px) {
-      width: 25%;
+      width: 25rem;
+      height: auto;
     }
   }
   &.hide {

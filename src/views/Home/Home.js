@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import HomeImage from "./Home.jpg";
 import LogoImage from "../../Assets/Logo.svg";
@@ -6,6 +6,15 @@ import SquareImage from "../../Assets/SquareImage.svg";
 import ScrollIcon from "../../Assets/ScrollIcon.svg";
 import { Link } from "react-scroll";
 import { Parallax } from "react-parallax";
+import { motion } from "framer-motion";
+import {
+  containerAnim,
+  fadeAnim,
+  layerAnim,
+  popAnim,
+  listAnim,
+  scrollAnim,
+} from "../../components/FramerMotion";
 
 const Home = () => {
   return (
@@ -14,14 +23,19 @@ const Home = () => {
       bgImageAlt="Goodlooking man in the suit"
       strength={400}
     >
-      <HomeSection id="Home">
-        <BlackLayer />
-        <WhiteLayer />
+      <HomeSection
+        id="Home"
+        variants={containerAnim}
+        initial="hidden"
+        animate="show"
+      >
+        <BlackLayer variants={layerAnim} />
+        <WhiteLayer variants={layerAnim} />
         <HomeSectionWrapper>
-          <Logo src={LogoImage} alt="Logo Image" />
-          <List>
+          <Logo src={LogoImage} alt="Logo Image" variants={fadeAnim} />
+          <List variants={listAnim}>
             <Link activeClass="active" to="Home" smooth={true} duration={1000}>
-              <ListItem>Home</ListItem>
+              <ListItem variants={popAnim}>Home</ListItem>
             </Link>
             <Link
               activeClass="active"
@@ -29,7 +43,7 @@ const Home = () => {
               smooth={true}
               duration={1000}
             >
-              <ListItem>About Us</ListItem>
+              <ListItem variants={popAnim}>About Us</ListItem>
             </Link>
             <Link
               activeClass="active"
@@ -37,7 +51,7 @@ const Home = () => {
               smooth={true}
               duration={1000}
             >
-              <ListItem>Collection</ListItem>
+              <ListItem variants={popAnim}>Collection</ListItem>
             </Link>
             <Link
               activeClass="active"
@@ -45,20 +59,22 @@ const Home = () => {
               smooth={true}
               duration={1000}
             >
-              <ListItem>Contact</ListItem>
+              <ListItem variants={popAnim}>Contact</ListItem>
             </Link>
           </List>
-          <Quote>The first step to be respected is to look respectable</Quote>
-          <SquareTopRight src={SquareImage} />
-          <SquareBottomLeft src={SquareImage} />
-          <Scroll src={ScrollIcon} />
+          <Quote variants={fadeAnim}>
+            The first step to be respected is to look respectable
+          </Quote>
+          <SquareTopRight src={SquareImage} variants={fadeAnim} />
+          <SquareBottomLeft src={SquareImage} variants={fadeAnim} />
+          <Scroll src={ScrollIcon} variants={scrollAnim} />
         </HomeSectionWrapper>
       </HomeSection>
     </ParallaxImg>
   );
 };
 
-const HomeSection = styled.section`
+const HomeSection = styled(motion.section)`
   width: 100%;
   height: 100vh;
   display: flex;
@@ -74,7 +90,7 @@ const ParallaxImg = styled(Parallax)`
   object-fit: cover;
 `;
 
-const WhiteLayer = styled.div`
+const WhiteLayer = styled(motion.div)`
   width: 50%;
   height: 100vh;
   background: rgba(255, 255, 255, 0.1);
@@ -84,7 +100,7 @@ const WhiteLayer = styled.div`
   }
 `;
 
-const BlackLayer = styled.div`
+const BlackLayer = styled(motion.div)`
   width: 50%;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
@@ -109,7 +125,7 @@ const HomeSectionWrapper = styled.div`
   }
 `;
 
-const Logo = styled.img`
+const Logo = styled(motion.img)`
   position: absolute;
   left: 0;
   top: 0;
@@ -118,7 +134,7 @@ const Logo = styled.img`
   }
 `;
 
-const SquareTopRight = styled.img`
+const SquareTopRight = styled(motion.img)`
   pointer-events: none;
   position: absolute;
   right: 0;
@@ -128,7 +144,7 @@ const SquareTopRight = styled.img`
   }
 `;
 
-const SquareBottomLeft = styled.img`
+const SquareBottomLeft = styled(motion.img)`
   pointer-events: none;
   display: none;
   @media screen and (min-width: 1200px) {
@@ -141,7 +157,7 @@ const SquareBottomLeft = styled.img`
   }
 `;
 
-const Scroll = styled.img`
+const Scroll = styled(motion.img)`
   position: absolute;
   right: 0;
   bottom: 0;
@@ -150,7 +166,7 @@ const Scroll = styled.img`
   }
 `;
 
-const Quote = styled.q`
+const Quote = styled(motion.q)`
   position: absolute;
   bottom: 0;
   left: 0;
@@ -170,7 +186,7 @@ const Quote = styled.q`
   }
 `;
 
-const List = styled.ul`
+const List = styled(motion.ul)`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -183,7 +199,7 @@ const List = styled.ul`
   }
 `;
 
-const ListItem = styled.button`
+const ListItem = styled(motion.button)`
   cursor: pointer;
   padding: 2rem;
   border: none;
@@ -204,7 +220,7 @@ const ListItem = styled.button`
     outline: none;
     &::before {
       transition: 0.5s ease;
-      width: 10%;
+      width: 100%;
       background: rgba(255, 255, 255, 0.3);
     }
   }

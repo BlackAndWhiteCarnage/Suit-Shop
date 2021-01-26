@@ -13,6 +13,7 @@ const Collection = () => {
   const [toggleProduct, setToggleProduct] = useState(false);
   const [productItem, setProductItem] = useState();
   const [bigImage, setBigImage] = useState();
+  const [showBigImage, setShowBigImage] = useState(false);
 
   const getProductPhotosHandler = (subCategory) => {
     let data = CollectionData.map((item) =>
@@ -29,6 +30,11 @@ const Collection = () => {
   };
 
   const bigImageHandler = (photo) => {
+    if (window.innerWidth < 680) {
+      setBigImage(photo);
+      setShowBigImage(!showBigImage);
+    }
+
     setBigImage(photo);
   };
 
@@ -88,6 +94,8 @@ const Collection = () => {
         bigImage={bigImage}
         productPhoto={productPhoto}
         passItemHandler={passItemHandler}
+        showBigImage={showBigImage}
+        setShowBigImage={setShowBigImage}
       />
     </CollectionSection>
   );
