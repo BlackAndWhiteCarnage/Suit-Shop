@@ -3,7 +3,7 @@ import styled from "styled-components";
 import HomeImage from "./Home.jpg";
 import LogoImage from "../../Assets/Logo.svg";
 import SquareImage from "../../Assets/SquareImage.svg";
-import ScrollIcon from "../../Assets/ScrollIcon.svg";
+import RedArrowIcon from "../../Assets/RedArrowIcon.svg";
 import { Link } from "react-scroll";
 import { Parallax } from "react-parallax";
 import { motion } from "framer-motion";
@@ -14,6 +14,7 @@ import {
   popAnim,
   listAnim,
   scrollAnim,
+  shakeAnim,
 } from "../../components/FramerMotion";
 
 const Home = () => {
@@ -67,7 +68,10 @@ const Home = () => {
           </Quote>
           <SquareTopRight src={SquareImage} variants={fadeAnim} />
           <SquareBottomLeft src={SquareImage} variants={fadeAnim} />
-          <Scroll src={ScrollIcon} variants={scrollAnim} />
+          <Scroll variants={scrollAnim}>
+            Scroll
+            <Arrow src={RedArrowIcon} variants={shakeAnim} />
+          </Scroll>
         </HomeSectionWrapper>
       </HomeSection>
     </ParallaxImg>
@@ -157,13 +161,21 @@ const SquareBottomLeft = styled(motion.img)`
   }
 `;
 
-const Scroll = styled(motion.img)`
+const Scroll = styled(motion.h1)`
+  display: flex;
+  align-items: center;
+  font-family: "Teko", sans-serif;
+  writing-mode: vertical-rl;
   position: absolute;
   right: 0;
   bottom: 0;
-  @media screen and (min-width: 620px) {
-    height: 10rem;
-  }
+  color: #e40000;
+  pointer-events: none;
+  font-size: 3rem;
+`;
+
+const Arrow = styled(motion.img)`
+  width: 2rem;
 `;
 
 const Quote = styled(motion.q)`

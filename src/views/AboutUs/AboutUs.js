@@ -6,22 +6,46 @@ import LogoImage from "../../Assets/Logo.svg";
 import XIcon from "../../Assets/XIcon.svg";
 import WavesIcon from "../../Assets/WavesIcon.svg";
 import ShapeIcon3 from "../../Assets/ShapeIcon3.svg";
+import { motion } from "framer-motion";
+import {
+  containerAnim,
+  fadeAnim,
+  layerAnim,
+  listAnim,
+  popAnim,
+  scrollAnim,
+  scaleAnim,
+  scaleRotateAnim,
+} from "../../components/FramerMotion";
+import { useScroll } from "../../components/useScroll";
 
 const AboutUs = () => {
+  const [element, controls] = useScroll();
+
   return (
-    <AboutUsSection id="About Us">
-      <AboutUsSectionImage src={AboutUsImage} alt="Man looking down the suit" />
+    <AboutUsSection
+      id="About Us"
+      variants={containerAnim}
+      animate={controls}
+      initial="hidden"
+      ref={element}
+    >
+      <AboutUsSectionImage
+        src={AboutUsImage}
+        alt="Man looking down the suit"
+        variants={scaleAnim}
+      />
       <AboutUsSquare>
-        <X src={XIcon} />
-        <Waves src={WavesIcon} />
-        <Shape src={ShapeIcon3} />
+        <X src={XIcon} variants={scaleRotateAnim} />
+        <Waves src={WavesIcon} variants={scaleRotateAnim} />
+        <Shape src={ShapeIcon3} variants={scaleRotateAnim} />
       </AboutUsSquare>
       <AboutUsSectionWrapper>
-        <Header>
+        <Header variants={scaleAnim}>
           Who are we?
           <Logo src={LogoImage} />
         </Header>
-        <Article>
+        <Article variants={scaleAnim}>
           We are the small company called Premium. When we started our journay
           My first purpose was to dress every man in town in the best suit they
           ever had. After a while the news about best suits in the town
@@ -35,7 +59,7 @@ const AboutUs = () => {
   );
 };
 
-const AboutUsSection = styled.section`
+const AboutUsSection = styled(motion.section)`
   width: 100%;
   height: 80vh;
   display: flex;
@@ -59,7 +83,7 @@ const AboutUsSquare = styled.div`
   }
 `;
 
-const AboutUsSectionImage = styled.img`
+const AboutUsSectionImage = styled(motion.img)`
   width: 30%;
   height: 100vh;
   object-fit: cover;
@@ -73,7 +97,7 @@ const AboutUsSectionWrapper = styled.div`
   background: #141c1f;
 `;
 
-const Header = styled.h1`
+const Header = styled(motion.h1)`
   position: relative;
   font-size: ${(props) => props.theme.fontM};
   margin: 2rem;
@@ -87,7 +111,7 @@ const Header = styled.h1`
   }
 `;
 
-const Article = styled.article`
+const Article = styled(motion.article)`
   font-size: ${(props) => props.theme.fontS};
   z-index: 10;
   line-height: 2rem;
@@ -117,7 +141,7 @@ const Triangle = styled.img`
   }
 `;
 
-const Shape = styled.img`
+const Shape = styled(motion.img)`
   position: absolute;
   right: 0;
   bottom: 0;
@@ -127,7 +151,7 @@ const Shape = styled.img`
   }
 `;
 
-const X = styled.img`
+const X = styled(motion.img)`
   position: absolute;
   right: 0;
   top: 0;
@@ -154,7 +178,7 @@ const Logo = styled.img`
   }
 `;
 
-const Waves = styled.img`
+const Waves = styled(motion.img)`
   position: absolute;
   left: 0;
   bottom: 0;

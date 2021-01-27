@@ -30,3 +30,38 @@ export const scrollAnim = {
     transition: { duration: 0.5, type: "spring", stiffness: 300 },
   },
 };
+
+export const shakeAnim = {
+  hidden: { y: 0 },
+  show: {
+    y: 10,
+    transition: {
+      duration: 2,
+      type: "spring",
+      stiffness: 300,
+      repeat: Infinity,
+    },
+  },
+};
+
+export const scaleAnim = {
+  hidden: { scale: 0.8, opacity: 0 },
+  show: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      duration: 1,
+    },
+  },
+};
+
+export const scaleRotateAnim = {
+  hidden: { scale: 0, rotate: 360 },
+  show: {
+    scale: 1,
+    rotate: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};

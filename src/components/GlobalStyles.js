@@ -13,6 +13,7 @@ body, button{
     font-family: 'Libre Baskerville', serif;
     font-weight: bold;
     color: #EAEAEA;
+    background: #111416;
 }
 ::-webkit-scrollbar {
     width: .5rem;
