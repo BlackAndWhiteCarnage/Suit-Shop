@@ -44,6 +44,19 @@ export const shakeAnim = {
   },
 };
 
+export const shakeLeftAnim = {
+  hidden: { x: 0, rotate: "-90deg" },
+  show: {
+    x: 10,
+    transition: {
+      duration: 2,
+      type: "spring",
+      stiffness: 300,
+      repeat: Infinity,
+    },
+  },
+};
+
 export const scaleAnim = {
   hidden: { scale: 0.8, opacity: 0 },
   show: {

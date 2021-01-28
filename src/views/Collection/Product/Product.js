@@ -14,6 +14,7 @@ const ProductItem = ({
   passItemHandler,
   showBigImage,
   setShowBigImage,
+  cart,
 }) => {
   return (
     <>
@@ -26,6 +27,7 @@ const ProductItem = ({
               productItem={productItem}
               setToggleProduct={setToggleProduct}
               bigImageHandler={bigImageHandler}
+              cart={cart}
             />
             {/* OTHER PRODUCTS SLIDER */}
             <OtherProducts
@@ -88,13 +90,13 @@ const ProductItemWrapper = styled.div`
 const ProductImagesWrapper = styled.div`
   display: none;
   height: 20%;
-  background-color: green;
   @media screen and (min-width: 680px) {
     width: 30%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background: #1b2327;
     img {
       width: 60%;

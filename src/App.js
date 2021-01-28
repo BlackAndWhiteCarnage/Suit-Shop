@@ -1,10 +1,13 @@
+import React, { useState } from "react";
 import GlobalStyles from "./components/GlobalStyles";
 import { Parallax } from "react-parallax";
 import styled, { ThemeProvider } from "styled-components";
+import { Switch, Route } from "react-router-dom";
 import Home from "./views/Home/Home";
 import AboutUs from "./views/AboutUs/AboutUs";
 import Collection from "./views/Collection/Collection";
 import Contact from "./views/Contact/Contact";
+import Cart from "./views/Cart/Cart";
 import Footer from "./views/Footer/Footer";
 import Suits1 from "./Assets/Suits1.jpg";
 import Suits2 from "./Assets/Suits2.jpg";
@@ -23,30 +26,39 @@ const theme = {
 };
 
 function App() {
+  const [cart, setCart] = useState([]);
+
   return (
     <div className="App">
       <GlobalStyles />
       <ThemeProvider theme={theme}>
-        <Home />
-        <Parallax bgImage={Suits2} strength={600}>
-          <BlackLayer>
-            <SectionHeader>O nas</SectionHeader>
-          </BlackLayer>
-        </Parallax>
-        <AboutUs />
-        <Parallax bgImage={Suits1} strength={600}>
-          <BlackLayer>
-            <SectionHeader>Kolekcja</SectionHeader>
-          </BlackLayer>
-        </Parallax>
-        <Collection />
-        <Parallax bgImage={Suits3} strength={600}>
-          <BlackLayer>
-            <SectionHeader>Kontakt</SectionHeader>
-          </BlackLayer>
-        </Parallax>
-        <Contact />
-        <Footer />
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+            <Parallax bgImage={Suits2} strength={600}>
+              <BlackLayer>
+                <SectionHeader>O nas</SectionHeader>
+              </BlackLayer>
+            </Parallax>
+            <AboutUs />
+            <Parallax bgImage={Suits1} strength={600}>
+              <BlackLayer>
+                <SectionHeader>Kolekcja</SectionHeader>
+              </BlackLayer>
+            </Parallax>
+            <Collection cart={cart} setCart={setCart} />
+            <Parallax bgImage={Suits3} strength={600}>
+              <BlackLayer>
+                <SectionHeader>Kontakt</SectionHeader>
+              </BlackLayer>
+            </Parallax>
+            <Contact />
+            <Footer />
+          </Route>
+          <Route path="/Cart" exact>
+            <Cart cart={cart} setCart={setCart} />
+          </Route>
+        </Switch>
       </ThemeProvider>
     </div>
   );

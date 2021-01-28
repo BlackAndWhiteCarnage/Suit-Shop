@@ -241,7 +241,6 @@ export const CollectionData = [
   {
     category: "Kurtki i Płaszcze",
     subCategories: [
-      "Wszystkie",
       "Płaszcze",
       "Kamizelki",
       "Kurtki Skórzane",
@@ -404,7 +403,7 @@ export const CollectionData = [
   },
   {
     category: "Garnitury",
-    subCategories: ["Wszystkie", "Garnitury", "Zestawy Marynarka + Spodnie"],
+    subCategories: ["Garnitury", "Zestawy Marynarka + Spodnie"],
     products: [
       {
         category: "Garnitury",
@@ -514,11 +513,7 @@ export const CollectionData = [
   },
   {
     category: "Koszule",
-    subCategories: [
-      "Wszystkie",
-      "Koszule z długim rękawem",
-      "Koszule dzianinowe",
-    ],
+    subCategories: ["Koszule z długim rękawem", "Koszule dzianinowe"],
     products: [
       {
         category: "Koszule z długim rękawem",
@@ -612,7 +607,7 @@ export const CollectionData = [
   },
   {
     category: "Swetry i Bluzy",
-    subCategories: ["Wszystkie", "Swetry", "Golfy", "Polo", "Bluzy"],
+    subCategories: ["Swetry", "Golfy", "Polo", "Bluzy"],
     products: [
       {
         category: "Swetry",
@@ -754,7 +749,7 @@ export const CollectionData = [
   },
   {
     category: "Buty",
-    subCategories: ["Wszystkie", "Buty Casual", "Buty Formalne"],
+    subCategories: ["Buty Casual", "Buty Formalne"],
     products: [
       {
         category: "Buty Casual",

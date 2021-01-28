@@ -1,20 +1,39 @@
 import React from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
+import { useScroll } from "../../components/useScroll";
 import ContactImage from "./Contact.jpg";
 import SquareImage from "../../Assets/SquareImage.svg";
 import LogoImage from "../../Assets/Logo.svg";
 import Button from "../../components/Button";
+import {
+  containerAnim,
+  fadeAnim,
+  layerAnim,
+  popAnim,
+  listAnim,
+  scrollAnim,
+  shakeAnim,
+} from "../../components/FramerMotion";
 
 const Contact = () => {
+  const [element, controls] = useScroll();
+
   return (
-    <ContactSection id="Contact">
+    <ContactSection
+      id="Contact"
+      variants={containerAnim}
+      animate={controls}
+      initial="hidden"
+      ref={element}
+    >
       <ContactSectionImage src={ContactImage} />
       <BlackLayer>
         <Logo src={LogoImage} alt="Logo Image" />
         <Form>
-          <Header>Have any questions?</Header>
-          <SquareTopRight src={SquareImage} />
-          <SquareBottomLeft src={SquareImage} />
+          <Header variants={fadeAnim}>Have any questions?</Header>
+          <SquareTopRight src={SquareImage} variants={fadeAnim} />
+          <SquareBottomLeft src={SquareImage} variants={fadeAnim} />
           <Label htmlFor="Subject">Subject</Label>
           <Input id="Subject" type="text" />
           <Label htmlFor="Email">Email</Label>
@@ -28,7 +47,7 @@ const Contact = () => {
   );
 };
 
-const ContactSection = styled.section`
+const ContactSection = styled(motion.section)`
   width: 100%;
   height: 80vh;
 `;
@@ -135,7 +154,7 @@ const TextArea = styled.textarea`
   }
 `;
 
-const Header = styled.h2`
+const Header = styled(motion.h2)`
   position: absolute;
   top: 0;
   left: 0;
@@ -145,7 +164,7 @@ const Header = styled.h2`
   }
 `;
 
-const SquareTopRight = styled.img`
+const SquareTopRight = styled(motion.img)`
   position: absolute;
   top: 0;
   right: 0;
@@ -154,7 +173,7 @@ const SquareTopRight = styled.img`
   }
 `;
 
-const SquareBottomLeft = styled.img`
+const SquareBottomLeft = styled(motion.img)`
   position: absolute;
   bottom: 0;
   left: 0;

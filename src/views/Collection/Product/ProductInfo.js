@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../../components/Button";
 import BackIcon from "../../../Assets/BackIcon.svg";
 import ArrowIcon from "../../../Assets/Arrow.svg";
 import LogoIcon from "../../../Assets/Logo.svg";
+import CartIcon from "../../../Assets/CartIcon.svg";
 
 const ProductInfo = ({
   productItem,
@@ -11,19 +13,29 @@ const ProductInfo = ({
   setBigImage,
   bigImageHandler,
   showMobileBigImage,
+  cart,
 }) => {
   const [description, setDescription] = useState(false);
+
+  const addToCartHandler = () => {
+    cart.push(productItem);
+  };
 
   const toggleDescription = () => setDescription(!description);
   return (
     <ProductInfoWrapper>
-      <Icon
-        src={BackIcon}
-        onClick={() => {
-          setToggleProduct(false);
-          setBigImage();
-        }}
-      />
+      <IconsWrapper>
+        <Icon
+          src={BackIcon}
+          onClick={() => {
+            setToggleProduct(false);
+            setBigImage();
+          }}
+        />
+        <Link to="/Cart">
+          <Cart src={CartIcon} />
+        </Link>
+      </IconsWrapper>
       <Info>
         <ProductName>{productItem.productName}</ProductName>
         <ProductSize>
@@ -36,8 +48,8 @@ const ProductInfo = ({
             {productItem.description}
           </ProductDescription>
         </DescriptionButton>
-        <ProductPrice>{productItem.price}$</ProductPrice>
-        <Button text={"Dodaj do koszyka"} />
+        <ProductPrice>{productItem.price}zł</ProductPrice>
+        <Button text={"Dodaj do koszyka"} click={addToCartHandler} />
         <Logo src={LogoIcon} alt="Logo Image" />
       </Info>
       <ProductImagesWrapper2>
@@ -127,11 +139,11 @@ const ProductImagesWrapper2 = styled.div`
   width: 90%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   border-bottom: 2px solid #e40000;
   img {
     width: 25%;
-    height: 80%;
+    height: auto;
   }
   @media screen and (min-width: 680px) {
     display: none;
@@ -155,13 +167,38 @@ const ProductInfoWrapper = styled.div`
   }
 `;
 
-const Icon = styled.img`
+const IconsWrapper = styled.div`
   position: absolute;
   z-index: 200;
   top: 1rem;
   right: 1rem;
   width: 3rem;
   cursor: pointer;
+  transition: 0.5s ease;
+  @media screen and (min-width: 680px) {
+    width: 4rem;
+  }
+`;
+
+const Icon = styled.img`
+  z-index: 200;
+  width: 3rem;
+  cursor: pointer;
+  transition: 0.5s ease;
+  &:hover {
+    transform: rotate(-360deg);
+    transition: 1s ease;
+  }
+  @media screen and (min-width: 680px) {
+    width: 4rem;
+  }
+`;
+
+const Cart = styled.img`
+  z-index: 200;
+  width: 3rem;
+  cursor: pointer;
+  transition: 0.5s ease;
   @media screen and (min-width: 680px) {
     width: 4rem;
   }
@@ -199,6 +236,9 @@ const ProductImage = styled.img`
   &:hover {
     transform: scale(0.98);
     transition: 0.5s ease;
+  }
+  @media screen and (max-width: 680px) {
+    margin: 0 1rem;
   }
   @media screen and (min-width: 830px) {
     height: 80%;

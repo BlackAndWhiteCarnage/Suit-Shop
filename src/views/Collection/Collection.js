@@ -6,17 +6,16 @@ import { useScroll } from "../../components/useScroll";
 import LogoImage from "../../Assets/Logo.svg";
 import ShapeIcon from "../../Assets/ShapeIcon.svg";
 import ShapeIcon4 from "../../Assets/ShapeIcon4.svg";
-import ArrowIcon from "../../Assets/Arrow.svg";
+import RedArrowIcon from "../../Assets/RedArrowIcon.svg";
 import ProductItem from "./Product/Product";
 import {
   containerAnim,
-  scaleAnim,
-  scaleRotateAnim,
   listAnim,
   popAnim,
+  shakeLeftAnim,
 } from "../../components/FramerMotion";
 
-const Collection = () => {
+const Collection = ({ cart }) => {
   const [subCategories, setSubCategories] = useState([]);
   const [productPhoto, setProductPhoto] = useState([]);
   const [toggleProduct, setToggleProduct] = useState(false);
@@ -71,16 +70,13 @@ const Collection = () => {
               {item.category}
             </ListItem>
           ))}
-          <Arrow src={ArrowIcon} />
+          <Arrow variants={shakeLeftAnim} src={RedArrowIcon} />
         </MainCategories>
         {/* SUB CATEGORIES */}
-        <SubCategories variants={listAnim}>
+        <SubCategories>
           <Logo src={LogoImage} />
           {subCategories.map((subCategory) => (
-            <ListItem
-              variants={popAnim}
-              onClick={() => getProductPhotosHandler(subCategory)}
-            >
+            <ListItem onClick={() => getProductPhotosHandler(subCategory)}>
               {subCategory}
             </ListItem>
           ))}
@@ -117,6 +113,7 @@ const Collection = () => {
         passItemHandler={passItemHandler}
         showBigImage={showBigImage}
         setShowBigImage={setShowBigImage}
+        cart={cart}
       />
     </CollectionSection>
   );
@@ -182,19 +179,18 @@ const Shape2 = styled.img`
   }
 `;
 
-const Arrow = styled.img`
+const Arrow = styled(motion.img)`
   position: absolute;
   bottom: 0.5rem;
   right: 50%;
   transform: translate(-50%, 0);
   @media screen and (min-width: 830px) {
-    transform: rotate(-90deg);
     bottom: 50%;
     right: 1rem;
   }
 `;
 
-const SubCategories = styled(motion.ul)`
+const SubCategories = styled.ul`
   position: relative;
   width: 100%;
   height: 40%;
