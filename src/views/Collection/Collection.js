@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { CollectionData } from "../../Data/CollectionData";
+import { motion } from "framer-motion";
+import { useScroll } from "../../components/useScroll";
 import LogoImage from "../../Assets/Logo.svg";
 import ShapeIcon from "../../Assets/ShapeIcon.svg";
 import ShapeIcon4 from "../../Assets/ShapeIcon4.svg";
 import ArrowIcon from "../../Assets/Arrow.svg";
 import ProductItem from "./Product/Product";
+import {
+  containerAnim,
+  scaleAnim,
+  scaleRotateAnim,
+  listAnim,
+  popAnim,
+} from "../../components/FramerMotion";
 
 const Collection = () => {
   const [subCategories, setSubCategories] = useState([]);
@@ -14,6 +23,8 @@ const Collection = () => {
   const [productItem, setProductItem] = useState();
   const [bigImage, setBigImage] = useState();
   const [showBigImage, setShowBigImage] = useState(false);
+
+  const [element, controls] = useScroll();
 
   const getProductPhotosHandler = (subCategory) => {
     let data = CollectionData.map((item) =>
@@ -39,13 +50,20 @@ const Collection = () => {
   };
 
   return (
-    <CollectionSection id="Collection">
+    <CollectionSection
+      id="Collection"
+      variants={containerAnim}
+      animate={controls}
+      initial="hidden"
+      ref={element}
+    >
       <Categories>
         {/* MAIN CATEGORIES */}
-        <MainCategories>
+        <MainCategories variants={listAnim}>
           <Shape src={ShapeIcon} />
           {CollectionData.map((item) => (
             <ListItem
+              variants={popAnim}
               onClick={() => {
                 setSubCategories(item.subCategories.map((i) => i));
               }}
@@ -56,10 +74,13 @@ const Collection = () => {
           <Arrow src={ArrowIcon} />
         </MainCategories>
         {/* SUB CATEGORIES */}
-        <SubCategories>
+        <SubCategories variants={listAnim}>
           <Logo src={LogoImage} />
           {subCategories.map((subCategory) => (
-            <ListItem onClick={() => getProductPhotosHandler(subCategory)}>
+            <ListItem
+              variants={popAnim}
+              onClick={() => getProductPhotosHandler(subCategory)}
+            >
               {subCategory}
             </ListItem>
           ))}
@@ -101,7 +122,7 @@ const Collection = () => {
   );
 };
 
-const CollectionSection = styled.section`
+const CollectionSection = styled(motion.section)`
   width: 100%;
   height: 100vh;
   background: #141c1f;
@@ -124,7 +145,7 @@ const Categories = styled.div`
   }
 `;
 
-const MainCategories = styled.ul`
+const MainCategories = styled(motion.ul)`
   position: relative;
   list-style: none;
   width: 100%;
@@ -173,7 +194,7 @@ const Arrow = styled.img`
   }
 `;
 
-const SubCategories = styled.ul`
+const SubCategories = styled(motion.ul)`
   position: relative;
   width: 100%;
   height: 40%;
@@ -190,7 +211,7 @@ const SubCategories = styled.ul`
   }
 `;
 
-const ListItem = styled.button`
+const ListItem = styled(motion.button)`
   background: none;
   border: none;
   cursor: pointer;

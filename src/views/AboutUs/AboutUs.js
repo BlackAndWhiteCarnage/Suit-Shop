@@ -9,11 +9,6 @@ import ShapeIcon3 from "../../Assets/ShapeIcon3.svg";
 import { motion } from "framer-motion";
 import {
   containerAnim,
-  fadeAnim,
-  layerAnim,
-  listAnim,
-  popAnim,
-  scrollAnim,
   scaleAnim,
   scaleRotateAnim,
 } from "../../components/FramerMotion";
