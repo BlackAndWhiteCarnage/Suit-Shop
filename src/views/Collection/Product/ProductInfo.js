@@ -14,6 +14,7 @@ const ProductInfo = ({
   bigImageHandler,
   showMobileBigImage,
   cart,
+  setCart,
 }) => {
   const [description, setDescription] = useState(false);
 

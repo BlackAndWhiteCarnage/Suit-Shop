@@ -15,7 +15,7 @@ import {
   shakeLeftAnim,
 } from "../../components/FramerMotion";
 
-const Collection = ({ cart }) => {
+const Collection = ({ cart, setCart }) => {
   const [subCategories, setSubCategories] = useState([]);
   const [productPhoto, setProductPhoto] = useState([]);
   const [toggleProduct, setToggleProduct] = useState(false);
@@ -37,6 +37,7 @@ const Collection = ({ cart }) => {
 
   const passItemHandler = (item) => {
     setProductItem(item);
+    console.log(item);
   };
 
   const bigImageHandler = (photo) => {
@@ -114,6 +115,7 @@ const Collection = ({ cart }) => {
         showBigImage={showBigImage}
         setShowBigImage={setShowBigImage}
         cart={cart}
+        setCart={setCart}
       />
     </CollectionSection>
   );

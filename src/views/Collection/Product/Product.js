@@ -15,6 +15,7 @@ const ProductItem = ({
   showBigImage,
   setShowBigImage,
   cart,
+  setCart,
 }) => {
   return (
     <>
@@ -28,6 +29,7 @@ const ProductItem = ({
               setToggleProduct={setToggleProduct}
               bigImageHandler={bigImageHandler}
               cart={cart}
+              setCart={setCart}
             />
             {/* OTHER PRODUCTS SLIDER */}
             <OtherProducts
