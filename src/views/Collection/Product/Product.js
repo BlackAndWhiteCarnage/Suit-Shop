@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import ProductInfo from "./ProductInfo";
 import OtherProducts from "./OtherProducts";
+import VistulaInfo from "../../../components/VistulaInfo";
 
 const ProductItem = ({
   toggleProduct,
@@ -49,12 +50,16 @@ const ProductItem = ({
             ))}
           </ProductImagesWrapper>
           {/* HERO PRODUCT IMAGE */}
-          <BigImageWrapper className={showBigImage ? "show" : "hide"}>
+          <BigImageWrapper
+            onClick={() => setShowBigImage(!showBigImage)}
+            className={showBigImage ? "show" : "hide"}
+          >
             <BigImage
               className={showBigImage ? "show" : "hide"}
               src={bigImage}
               onClick={() => setShowBigImage(!showBigImage)}
             />
+            <VistulaInfo />
           </BigImageWrapper>
         </ProductItemWrapper>
       )}
@@ -111,6 +116,7 @@ const ProductImagesWrapper = styled.div`
 `;
 
 const BigImageWrapper = styled.div`
+  position: relative;
   width: 35%;
   height: 100%;
   display: flex;
@@ -125,7 +131,7 @@ const BigImageWrapper = styled.div`
     z-index: 200;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
   }
   @media screen and (min-width: 1200px) {
     width: 20%;

@@ -25,7 +25,9 @@ const OtherProducts = ({
 
   return (
     <OtherProductsWrapper>
-      <PrevArrow src={SliderArrowImage} onClick={prevSlide} />
+      <PrevArrowBtn onClick={prevSlide}>
+        <PrevArrow src={SliderArrowImage} />
+      </PrevArrowBtn>
       {productPhoto.map((o) =>
         o.map((item, index) => (
           <OtherProductImage
@@ -39,7 +41,9 @@ const OtherProducts = ({
           />
         ))
       )}
-      <NextArrow src={SliderArrowImage} onClick={nextSlide} />
+      <NextArrowBtn onClick={nextSlide}>
+        <NextArrow src={SliderArrowImage} />
+      </NextArrowBtn>
       <Triangle src={TriangleImage} />
     </OtherProductsWrapper>
   );
@@ -96,27 +100,49 @@ const OtherProductImage = styled.img`
   }
 `;
 
-const NextArrow = styled.img`
+const NextArrowBtn = styled.button`
   position: absolute;
   cursor: pointer;
   right: 20%;
   z-index: 200;
+  height: 4rem;
   width: 4rem;
+  border: none;
+  background: none;
+  transition: 0.5s ease;
+  &:hover {
+    transform: scale(1.2);
+    transition: 0.5s ease;
+  }
   @media screen and (min-width: 680px) {
     right: 10%;
   }
 `;
+const NextArrow = styled.img`
+  width: 4rem;
+`;
 
-const PrevArrow = styled.img`
+const PrevArrowBtn = styled.button`
   position: absolute;
   cursor: pointer;
   left: 20%;
   z-index: 200;
   width: 4rem;
+  height: 4rem;
   transform: rotate(-180deg);
+  border: none;
+  background: none;
+  transition: 0.5s ease;
+  &:hover {
+    transform: scale(1.2) rotate(-180deg);
+    transition: 0.5s ease;
+  }
   @media screen and (min-width: 680px) {
     left: 10%;
   }
+`;
+const PrevArrow = styled.img`
+  width: 4rem;
 `;
 
 export default OtherProducts;

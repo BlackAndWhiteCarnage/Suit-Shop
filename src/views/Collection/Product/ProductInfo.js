@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Button from "../../../components/Button";
 import BackIcon from "../../../Assets/BackIcon.svg";
 import ArrowIcon from "../../../Assets/Arrow.svg";
@@ -181,14 +181,19 @@ const IconsWrapper = styled.div`
   }
 `;
 
+const rotate = keyframes`
+  to {
+    transform: rotate(-360deg);
+  }
+`;
+
 const Icon = styled.img`
   z-index: 200;
   width: 3rem;
   cursor: pointer;
   transition: 0.5s ease;
   &:hover {
-    transform: rotate(-360deg);
-    transition: 1s ease;
+    animation: ${rotate} 0.5s infinite linear;
   }
   @media screen and (min-width: 680px) {
     width: 4rem;

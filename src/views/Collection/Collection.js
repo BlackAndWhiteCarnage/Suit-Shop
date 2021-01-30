@@ -8,6 +8,7 @@ import ShapeIcon from "../../Assets/ShapeIcon.svg";
 import ShapeIcon4 from "../../Assets/ShapeIcon4.svg";
 import RedArrowIcon from "../../Assets/RedArrowIcon.svg";
 import ProductItem from "./Product/Product";
+import VistulaInfo from "../../components/VistulaInfo";
 import {
   containerAnim,
   listAnim,
@@ -97,6 +98,7 @@ const Collection = ({ cart, setCart }) => {
                 }}
               >
                 <ProductImage src={item.productPhotos[0]} />
+                <VistulaInfo />
               </ProductImageWrapper>
             );
           })
@@ -284,6 +286,7 @@ const ProductImage = styled.img`
 `;
 
 const ProductImageWrapper = styled.button`
+  position: relative;
   width: 100%;
   min-height: 80%;
   object-fit: cover;
