@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import HomeImage from "./Home.jpg";
 import LogoImage from "../../Assets/Logo.svg";
 import SquareImage from "../../Assets/SquareImage.svg";
 import RedArrowIcon from "../../Assets/RedArrowIcon.svg";
+import CartIcon from "../../Assets/CartIcon.svg";
+import ArrowUp from "../../Assets/ArrowUp.svg";
 import { Link } from "react-scroll";
+import { Link as LinkRouter } from "react-router-dom";
 import { Parallax } from "react-parallax";
 import { motion } from "framer-motion";
 import {
@@ -17,7 +20,11 @@ import {
   shakeAnim,
 } from "../../components/FramerMotion";
 
-const Home = () => {
+const Home = ({ cart }) => {
+  const scrollTopHandler = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <ParallaxImg
       bgImage={HomeImage}
@@ -30,6 +37,13 @@ const Home = () => {
         initial="hidden"
         animate="show"
       >
+        <LinkRoute to="/Cart">
+          <Cart src={CartIcon} />
+          <CartCount>{cart.length}</CartCount>
+        </LinkRoute>
+        <ArrowWrapper onClick={scrollTopHandler}>
+          <HomeArrow src={ArrowUp} />
+        </ArrowWrapper>
         <BlackLayer variants={layerAnim} />
         <WhiteLayer variants={layerAnim} />
         <HomeSectionWrapper>
@@ -145,6 +159,101 @@ const SquareTopRight = styled(motion.img)`
   top: 0;
   @media screen and (min-width: 620px) {
     height: 4rem;
+  }
+`;
+
+const Cart = styled.img`
+  width: 2rem;
+  @media screen and (min-width: 820px) {
+    width: 3rem;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 3.5rem;
+  }
+`;
+const CartCount = styled.div`
+  font-family: "Teko", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  color: #00cd46;
+  @media screen and (min-width: 820px) {
+    width: 2rem;
+  }
+  @media screen and (min-width: 1200px) {
+    left: -1.5rem;
+    width: 3rem;
+    height: 3rem;
+  }
+`;
+const LinkRoute = styled(LinkRouter)`
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0.5rem;
+  top: 0.5rem;
+  width: 3rem;
+  height: 3rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  z-index: 500;
+  transition: 0.2s ease;
+  @media screen and (min-width: 820px) {
+    width: 4rem;
+    height: 4rem;
+    top: 3rem;
+    right: 3rem;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 6rem;
+    height: 6rem;
+  }
+  &:hover {
+    transform: scale(1.2);
+    transition: 0.2s ease;
+  }
+`;
+const HomeArrow = styled.img`
+  width: 2.5rem;
+  @media screen and (min-width: 820px) {
+    width: 3rem;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 3.5rem;
+  }
+`;
+const ArrowWrapper = styled.div`
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  z-index: 500;
+  transition: 0.2s ease;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  @media screen and (min-width: 820px) {
+    right: 3rem;
+    bottom: 3rem;
+    width: 4rem;
+    height: 4rem;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 6rem;
+    height: 6rem;
+  }
+  &:hover {
+    transform: scale(1.2);
+    transition: 0.2s ease;
   }
 `;
 

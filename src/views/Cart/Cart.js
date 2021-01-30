@@ -14,7 +14,6 @@ const Cart = ({ cart, setCart }) => {
   });
 
   let summary = () => {
-    console.log(cartValues.length);
     if (cartValues.length !== 0) {
       return cartValues.reduce((a, b) => a + b);
     } else {

@@ -34,7 +34,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <Switch>
           <Route path="/" exact>
-            <Home />
+            <Home cart={cart} />
             <Parallax bgImage={Suits2} strength={600}>
               <BlackLayer>
                 <SectionHeader>O nas</SectionHeader>

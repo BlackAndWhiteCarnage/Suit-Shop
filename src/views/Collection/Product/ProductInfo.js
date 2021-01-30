@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import Button from "../../../components/Button";
 import BackIcon from "../../../Assets/BackIcon.svg";
 import ArrowIcon from "../../../Assets/Arrow.svg";
 import LogoIcon from "../../../Assets/Logo.svg";
-import CartIcon from "../../../Assets/CartIcon.svg";
 
 const ProductInfo = ({
   productItem,
@@ -20,6 +18,7 @@ const ProductInfo = ({
 
   const addToCartHandler = () => {
     cart.push(productItem);
+    setCart([...cart]);
   };
 
   const toggleDescription = () => setDescription(!description);
@@ -33,9 +32,6 @@ const ProductInfo = ({
             setBigImage();
           }}
         />
-        <Link to="/Cart">
-          <Cart src={CartIcon} />
-        </Link>
       </IconsWrapper>
       <Info>
         <ProductName>{productItem.productName}</ProductName>
