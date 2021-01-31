@@ -43,10 +43,9 @@ const ProductItem = ({
           {/* MULTIPE PRODUCT IMAGES */}
           <ProductImagesWrapper>
             {productItem.productPhotos.map((photo) => (
-              <ProductImage
-                src={photo}
-                onClick={() => bigImageHandler(photo)}
-              />
+              <ProductBtn onClick={() => bigImageHandler(photo)}>
+                <ProductImage src={photo} />
+              </ProductBtn>
             ))}
           </ProductImagesWrapper>
           {/* HERO PRODUCT IMAGE */}
@@ -105,10 +104,10 @@ const ProductImagesWrapper = styled.div`
     align-items: center;
     justify-content: center;
     background: #1b2327;
-    img {
+    /* img {
       width: 60%;
       height: 31%;
-    }
+    } */
   }
   @media screen and (min-width: 1200px) {
     width: 10%;
@@ -165,24 +164,33 @@ const ProductsWrapper = styled.div`
 `;
 
 const ProductImage = styled.img`
+  position: absolute;
+  width: 80%;
+  height: 95%;
   object-fit: cover;
   z-index: 8;
-  margin: 1rem 0;
   cursor: pointer;
   transition: 0.3s ease;
+  @media screen and (min-width: 620px) {
+    width: 50%;
+  }
   &:hover {
     transform: scale(0.98);
     transition: 0.5s ease;
   }
-  @media screen and (min-width: 830px) {
-    height: 80%;
-    width: 49%;
-    margin-left: 1%;
-  }
-  @media screen and (min-width: 1200px) {
-    height: 100%;
-    width: 32%;
-  }
+`;
+
+const ProductBtn = styled.button`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  z-index: 8;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  transition: 0.3s ease;
 `;
 
 export default ProductItem;

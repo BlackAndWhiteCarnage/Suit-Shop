@@ -6,16 +6,22 @@ import LogoImage from "../../Assets/Logo.svg";
 import XIcon from "../../Assets/XIcon.svg";
 import WavesIcon from "../../Assets/WavesIcon.svg";
 import ShapeIcon3 from "../../Assets/ShapeIcon3.svg";
+import ArrowUp from "../../Assets/ArrowUp.svg";
 import { motion } from "framer-motion";
 import {
   containerAnim,
   scaleAnim,
   scaleRotateAnim,
+  fadeAnim,
 } from "../../components/FramerMotion";
 import { useScroll } from "../../components/useScroll";
 
 const AboutUs = () => {
   const [element, controls] = useScroll();
+
+  const scrollTopHandler = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <AboutUsSection
@@ -30,6 +36,9 @@ const AboutUs = () => {
         alt="Man looking down the suit"
         variants={scaleAnim}
       />
+      <ArrowWrapper onClick={scrollTopHandler} variants={fadeAnim}>
+        <HomeArrow src={ArrowUp} />
+      </ArrowWrapper>
       <AboutUsSquare>
         <X src={XIcon} variants={scaleRotateAnim} />
         <Waves src={WavesIcon} variants={scaleRotateAnim} />
@@ -40,13 +49,13 @@ const AboutUs = () => {
           Who are we?
           <Logo src={LogoImage} />
         </Header>
-        <Article variants={scaleAnim}>
-          We are the small company called Premium. When we started our journay
+        <Article variants={fadeAnim}>
+          We are the small company called Suitsless. When we started our journay
           My first purpose was to dress every man in town in the best suit they
           ever had. After a while the news about best suits in the town
           spread... Now we are making best suits in whole state, they are
           expensive but made of best of the best materials. And thats why we are
-          called Premium.
+          called Suitsless.
         </Article>
       </AboutUsSectionWrapper>
       <Triangle src={TriangleImage} />
@@ -60,6 +69,44 @@ const AboutUsSection = styled(motion.section)`
   display: flex;
   position: relative;
   overflow: hidden;
+`;
+
+const ArrowWrapper = styled(motion.button)`
+  border: none;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  z-index: 500;
+  transition: 0.2s ease;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  @media screen and (min-width: 820px) {
+    width: 4rem;
+    height: 4rem;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 6rem;
+    height: 6rem;
+  }
+  &:hover {
+    transform: scale(1.2);
+    transition: 0.2s ease;
+  }
+`;
+const HomeArrow = styled.img`
+  width: 2.5rem;
+  @media screen and (min-width: 820px) {
+    width: 3rem;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 3.5rem;
+  }
 `;
 
 const AboutUsSquare = styled.div`

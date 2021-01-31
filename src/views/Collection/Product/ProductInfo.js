@@ -24,14 +24,13 @@ const ProductInfo = ({
   const toggleDescription = () => setDescription(!description);
   return (
     <ProductInfoWrapper>
-      <IconsWrapper>
-        <Icon
-          src={BackIcon}
-          onClick={() => {
-            setToggleProduct(false);
-            setBigImage();
-          }}
-        />
+      <IconsWrapper
+        onClick={() => {
+          setToggleProduct(false);
+          setBigImage();
+        }}
+      >
+        <Icon src={BackIcon} />
       </IconsWrapper>
       <Info>
         <ProductName>{productItem.productName}</ProductName>
@@ -164,7 +163,8 @@ const ProductInfoWrapper = styled.div`
   }
 `;
 
-const IconsWrapper = styled.div`
+const IconsWrapper = styled.button`
+  border: none;
   position: absolute;
   z-index: 200;
   top: 1rem;

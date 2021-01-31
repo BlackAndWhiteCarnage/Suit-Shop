@@ -21,10 +21,6 @@ import {
 } from "../../components/FramerMotion";
 
 const Home = ({ cart }) => {
-  const scrollTopHandler = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <ParallaxImg
       bgImage={HomeImage}
@@ -37,13 +33,10 @@ const Home = ({ cart }) => {
         initial="hidden"
         animate="show"
       >
-        <LinkRoute to="/Cart">
+        <LinkRoute to="/Cart" className={cart.length !== 0 && "toggle"}>
           <Cart src={CartIcon} />
-          <CartCount>{cart.length}</CartCount>
+          {cart.length !== 0 && <CartCount>{cart.length}</CartCount>}
         </LinkRoute>
-        <ArrowWrapper onClick={scrollTopHandler}>
-          <HomeArrow src={ArrowUp} />
-        </ArrowWrapper>
         <BlackLayer variants={layerAnim} />
         <WhiteLayer variants={layerAnim} />
         <HomeSectionWrapper>
@@ -171,30 +164,19 @@ const Cart = styled.img`
     width: 3.5rem;
   }
 `;
-const CartCount = styled.div`
+const CartCount = styled.p`
   font-family: "Teko", sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 4rem;
-  width: 1rem;
-  height: 1rem;
-  position: absolute;
   color: #00cd46;
+  font-size: ${(props) => props.theme.fontXL};
   @media screen and (min-width: 820px) {
-    width: 2rem;
-  }
-  @media screen and (min-width: 1200px) {
-    left: -1.5rem;
-    width: 3rem;
-    height: 3rem;
+    font-size: ${(props) => props.theme.fontXXL};
   }
 `;
 const LinkRoute = styled(LinkRouter)`
   position: fixed;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   right: 0.5rem;
   top: 0.5rem;
   width: 3rem;
@@ -203,56 +185,32 @@ const LinkRoute = styled(LinkRouter)`
   border-radius: 50%;
   z-index: 500;
   transition: 0.2s ease;
-  @media screen and (min-width: 820px) {
+  &.toggle {
+    width: 5rem;
+    border-radius: 5px;
+    border: 2px solid #eaeaea;
+  }
+  @media screen and (min-width: 620px) {
     width: 4rem;
     height: 4rem;
-    top: 3rem;
-    right: 3rem;
+    &.toggle {
+      width: 6rem;
+      border-radius: 10px;
+    }
+  }
+  @media screen and (min-width: 820px) {
+    width: 5rem;
+    height: 5rem;
+    &.toggle {
+      width: 8rem;
+    }
   }
   @media screen and (min-width: 1200px) {
     width: 6rem;
     height: 6rem;
   }
   &:hover {
-    transform: scale(1.2);
-    transition: 0.2s ease;
-  }
-`;
-const HomeArrow = styled.img`
-  width: 2.5rem;
-  @media screen and (min-width: 820px) {
-    width: 3rem;
-  }
-  @media screen and (min-width: 1200px) {
-    width: 3.5rem;
-  }
-`;
-const ArrowWrapper = styled.div`
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  right: 0.5rem;
-  bottom: 0.5rem;
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 50%;
-  z-index: 500;
-  transition: 0.2s ease;
-  width: 3rem;
-  height: 3rem;
-  cursor: pointer;
-  @media screen and (min-width: 820px) {
-    right: 3rem;
-    bottom: 3rem;
-    width: 4rem;
-    height: 4rem;
-  }
-  @media screen and (min-width: 1200px) {
-    width: 6rem;
-    height: 6rem;
-  }
-  &:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     transition: 0.2s ease;
   }
 `;

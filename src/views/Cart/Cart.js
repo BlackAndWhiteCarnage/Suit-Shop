@@ -15,7 +15,7 @@ const Cart = ({ cart, setCart }) => {
 
   let summary = () => {
     if (cartValues.length !== 0) {
-      return cartValues.reduce((a, b) => a + b);
+      return cartValues.reduce((a, b) => a + b).toFixed(2);
     } else {
       return "0";
     }
@@ -66,7 +66,7 @@ const Cart = ({ cart, setCart }) => {
             Przedmiotów w koszyku: <span>{cart.length}</span>
           </ProductsCount>
           <TotalCost>
-            Do zapłaty: <span>{summary()}</span>
+            Do zapłaty: <span>{summary()}</span> zł
           </TotalCost>
           <Button text={"Zamów"} />
         </Wrapper>
