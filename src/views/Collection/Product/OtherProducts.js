@@ -30,15 +30,19 @@ const OtherProducts = ({
       </PrevArrowBtn>
       {productPhoto.map((o) =>
         o.map((item, index) => (
-          <OtherProductImage
+          <OtherProductImageWrapper
             className={index === current ? "show" : "hide"}
-            src={item.productPhotos[0]}
             onClick={() => {
               setBigImage(item.productPhotos[0]);
               setToggleProduct(true);
               passItemHandler(item);
             }}
-          />
+          >
+            <OtherProductImage
+              className={index === current ? "show" : "hide"}
+              src={item.productPhotos[0]}
+            />
+          </OtherProductImageWrapper>
         ))
       )}
       <NextArrowBtn onClick={nextSlide}>
@@ -76,8 +80,14 @@ const Triangle = styled.img`
 `;
 
 const OtherProductImage = styled.img`
+  width: 100%;
+`;
+
+const OtherProductImageWrapper = styled.button`
+  border: none;
   object-fit: cover;
   cursor: pointer;
+  background: none;
   &.show {
     z-index: 20;
     width: 30%;
@@ -92,6 +102,7 @@ const OtherProductImage = styled.img`
     }
   }
   &.hide {
+    display: none;
     width: 0;
     transition: 0.5s ease;
     opacity: 0;

@@ -33,10 +33,12 @@ const Home = ({ cart }) => {
         initial="hidden"
         animate="show"
       >
-        <LinkRoute to="/Cart" className={cart.length !== 0 && "toggle"}>
-          <Cart src={CartIcon} />
-          {cart.length !== 0 && <CartCount>{cart.length}</CartCount>}
-        </LinkRoute>
+        <LinkRouter to="/Cart">
+          <CartBtn className={cart.length !== 0 && "toggle"}>
+            <Cart src={CartIcon} />
+            {cart.length !== 0 && <CartCount>{cart.length}</CartCount>}
+          </CartBtn>
+        </LinkRouter>
         <BlackLayer variants={layerAnim} />
         <WhiteLayer variants={layerAnim} />
         <HomeSectionWrapper>
@@ -172,7 +174,9 @@ const CartCount = styled.p`
     font-size: ${(props) => props.theme.fontXXL};
   }
 `;
-const LinkRoute = styled(LinkRouter)`
+
+const CartBtn = styled.button`
+  border: none;
   position: fixed;
   display: flex;
   align-items: center;

@@ -53,11 +53,12 @@ const ProductItem = ({
             onClick={() => setShowBigImage(!showBigImage)}
             className={showBigImage ? "show" : "hide"}
           >
-            <BigImage
-              className={showBigImage ? "show" : "hide"}
-              src={bigImage}
-              onClick={() => setShowBigImage(!showBigImage)}
-            />
+            <BigImageBtn onClick={() => setShowBigImage(!showBigImage)}>
+              <BigImage
+                className={showBigImage ? "show" : "hide"}
+                src={bigImage}
+              />
+            </BigImageBtn>
             <VistulaInfo />
           </BigImageWrapper>
         </ProductItemWrapper>
@@ -87,6 +88,7 @@ const ProductItemWrapper = styled.div`
     bottom: 0;
   }
   &.hide {
+    display: none;
     transition: 0.5s ease;
     opacity: 0;
     pointer-events: none;
@@ -94,8 +96,8 @@ const ProductItemWrapper = styled.div`
 `;
 
 const ProductImagesWrapper = styled.div`
-  display: none;
   height: 20%;
+  display: none;
   @media screen and (min-width: 680px) {
     width: 30%;
     height: 100%;
@@ -137,6 +139,18 @@ const BigImageWrapper = styled.div`
   }
 `;
 
+const BigImageBtn = styled.button`
+  border: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: 0.5s ease;
+  &.show {
+    width: auto;
+    height: 100vh;
+  }
+`;
 const BigImage = styled.img`
   width: 100%;
   height: 100%;
