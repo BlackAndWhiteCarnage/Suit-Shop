@@ -167,8 +167,7 @@ const Cart = styled.img`
   }
 `;
 const CartCount = styled.p`
-  font-family: "Teko", sans-serif;
-  color: #00cd46;
+  color: #e40000;
   font-size: ${(props) => props.theme.fontXL};
   @media screen and (min-width: 820px) {
     font-size: ${(props) => props.theme.fontXXL};
@@ -180,26 +179,24 @@ const CartBtn = styled.button`
   position: fixed;
   display: flex;
   align-items: center;
+  cursor: pointer;
   justify-content: space-around;
   right: 0.5rem;
   top: 0.5rem;
   width: 3rem;
   height: 3rem;
   background: rgba(0, 0, 0, 0.4);
-  border-radius: 50%;
   z-index: 500;
   transition: 0.2s ease;
   &.toggle {
     width: 5rem;
-    border-radius: 5px;
-    border: 2px solid #eaeaea;
+    border-radius: 0;
   }
   @media screen and (min-width: 620px) {
     width: 4rem;
     height: 4rem;
     &.toggle {
       width: 6rem;
-      border-radius: 10px;
     }
   }
   @media screen and (min-width: 820px) {
@@ -207,15 +204,23 @@ const CartBtn = styled.button`
     height: 5rem;
     &.toggle {
       width: 8rem;
+      &:hover {
+        width: 9rem;
+        transition: 0.2s ease;
+      }
+    }
+    &:hover {
+      width: 6rem;
+      transition: 0.2s ease;
     }
   }
   @media screen and (min-width: 1200px) {
     width: 6rem;
     height: 6rem;
-  }
-  &:hover {
-    transform: scale(1.1);
-    transition: 0.2s ease;
+    &:hover {
+      width: 7rem;
+      transition: 0.2s ease;
+    }
   }
 `;
 
@@ -235,7 +240,6 @@ const SquareBottomLeft = styled(motion.img)`
 const Scroll = styled(motion.h1)`
   display: flex;
   align-items: center;
-  font-family: "Teko", sans-serif;
   writing-mode: vertical-rl;
   position: absolute;
   right: 0;

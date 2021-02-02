@@ -105,11 +105,6 @@ const ProductImagesWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #1b2327;
-    /* img {
-      width: 60%;
-      height: 31%;
-    } */
   }
   @media screen and (min-width: 1200px) {
     width: 10%;
@@ -179,14 +174,14 @@ const ProductsWrapper = styled.div`
 
 const ProductImage = styled.img`
   position: absolute;
-  width: 80%;
+  width: 100%;
   height: 95%;
   object-fit: cover;
   z-index: 8;
   cursor: pointer;
   transition: 0.3s ease;
   @media screen and (min-width: 620px) {
-    width: 50%;
+    width: 100%;
   }
   &:hover {
     transform: scale(0.98);
@@ -203,7 +198,7 @@ const ProductBtn = styled.button`
   z-index: 8;
   cursor: pointer;
   height: 100%;
-  width: 100%;
+  width: 80%;
   transition: 0.3s ease;
 `;
 

@@ -80,7 +80,6 @@ const ArrowWrapper = styled(motion.button)`
   right: 0.5rem;
   bottom: 0.5rem;
   background: rgba(0, 0, 0, 0.4);
-  border-radius: 50%;
   z-index: 500;
   transition: 0.2s ease;
   width: 3rem;
@@ -89,15 +88,19 @@ const ArrowWrapper = styled(motion.button)`
   @media screen and (min-width: 820px) {
     width: 4rem;
     height: 4rem;
+    &:hover {
+    width: 5rem;
+    transition: 0.2s ease;
+  }
   }
   @media screen and (min-width: 1200px) {
     width: 6rem;
     height: 6rem;
-  }
-  &:hover {
-    transform: scale(1.2);
+    &:hover {
+    width: 7rem;
     transition: 0.2s ease;
   }
+
 `;
 const HomeArrow = styled.img`
   width: 2.5rem;

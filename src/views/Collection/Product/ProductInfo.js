@@ -177,30 +177,15 @@ const IconsWrapper = styled.button`
   }
 `;
 
-const rotate = keyframes`
-  to {
-    transform: rotate(-360deg);
-  }
-`;
-
 const Icon = styled.img`
   z-index: 200;
   width: 3rem;
   cursor: pointer;
-  transition: 0.5s ease;
+  transition: 0.2s ease;
   &:hover {
-    animation: ${rotate} 0.5s infinite linear;
+    transform: scale(1.2);
+    transition: 0.2s ease;
   }
-  @media screen and (min-width: 680px) {
-    width: 4rem;
-  }
-`;
-
-const Cart = styled.img`
-  z-index: 200;
-  width: 3rem;
-  cursor: pointer;
-  transition: 0.5s ease;
   @media screen and (min-width: 680px) {
     width: 4rem;
   }

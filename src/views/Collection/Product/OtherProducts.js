@@ -128,6 +128,9 @@ const NextArrowBtn = styled.button`
   @media screen and (min-width: 680px) {
     right: 10%;
   }
+  @media screen and (min-width: 1200px) {
+    right: 30%;
+  }
 `;
 const NextArrow = styled.img`
   width: 4rem;
@@ -150,6 +153,9 @@ const PrevArrowBtn = styled.button`
   }
   @media screen and (min-width: 680px) {
     left: 10%;
+  }
+  @media screen and (min-width: 1200px) {
+    left: 30%;
   }
 `;
 const PrevArrow = styled.img`

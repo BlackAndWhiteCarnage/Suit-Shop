@@ -32,7 +32,9 @@ const Cart = ({ cart, setCart }) => {
         <HeaderWrapper>
           <Header>Twój koszyk</Header>
           <Link to="/">
-            <Icon src={BackIcon} />
+            <BackBtn>
+              <Icon src={BackIcon} />
+            </BackBtn>
           </Link>
           <Line />
         </HeaderWrapper>
@@ -45,12 +47,13 @@ const Cart = ({ cart, setCart }) => {
                   <ProductPrice>{item.price}</ProductPrice>
                 </ProductInfo>
                 <ProductImage src={item.productPhotos[0]} />
-                <Delete
-                  src={DeleteIcon}
+                <DeleteBtn
                   onClick={() => {
                     deleteProductHandler(index);
                   }}
-                />
+                >
+                  <Delete src={DeleteIcon} />
+                </DeleteBtn>
                 <Square src={SquareImage} />
               </Product>
             ))
@@ -68,7 +71,7 @@ const Cart = ({ cart, setCart }) => {
           <TotalCost>
             Do zapłaty: <span>{summary()}</span> zł
           </TotalCost>
-          <Button text={"Zamów"} />
+          <Btn text={"Zamów"} />
         </Wrapper>
       </SectionWrapper>
       <CartImg src={CartImage} />
@@ -83,6 +86,14 @@ const CartWrapper = styled.div`
     display: flex;
   }
 `;
+const Btn = styled(Button)`
+  right: 2rem;
+  bottom: 2rem;
+  @media screen and (min-width: 1200px) {
+    right: 4rem;
+    bottom: 4rem;
+  }
+`;
 const SectionWrapper = styled.div`
   position: relative;
   width: 90%;
@@ -92,14 +103,6 @@ const SectionWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin: auto;
-  button {
-    right: 2rem;
-    bottom: 2rem;
-    @media screen and (min-width: 1200px) {
-      right: 4rem;
-      bottom: 4rem;
-    }
-  }
   @media screen and (min-width: 1200px) {
     width: 100%;
   }
@@ -143,10 +146,16 @@ const Square = styled.img`
   left: 0;
   transform: rotate(180deg);
 `;
-const Delete = styled.img`
+const DeleteBtn = styled.button`
   position: absolute;
-  cursor: pointer;
+  border: none;
+  top: 0;
   right: 0;
+  background: none;
+  cursor: pointer;
+  z-index: 200;
+`;
+const Delete = styled.img`
   top: 0;
   z-index: 200;
   @media screen and (min-width: 620px) {
@@ -190,24 +199,31 @@ const Line = styled.div`
   height: 0.2rem;
   background: #e40000;
 `;
-const rotate = keyframes`
-  to {
-    transform: rotate(-360deg);
-  }
-`;
 
-const Icon = styled.img`
+const BackBtn = styled.button`
+  border: none;
+  background: none;
   z-index: 200;
   width: 3rem;
   cursor: pointer;
   transition: 0.5s ease;
+`;
+const Icon = styled.img`
+  border: none;
+  background: none;
+  z-index: 200;
+  width: 3rem;
+  cursor: pointer;
+  transition: 0.2s ease;
   &:hover {
-    animation: ${rotate} 0.5s infinite linear;
+    transform: scale(1.2);
+    transition: 0.2s ease;
   }
   @media screen and (min-width: 680px) {
     width: 4rem;
   }
 `;
+
 const Product = styled.div`
   position: relative;
   width: 90%;
