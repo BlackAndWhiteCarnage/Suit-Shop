@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const Button = ({ text, click }) => {
-  return <StyledButton onClick={click}>{text}</StyledButton>;
+const Button = ({ text, click, className }) => {
+  return (
+    <StyledButton className={className} onClick={click}>
+      {text}
+    </StyledButton>
+  );
 };
 
 const StyledButton = styled.button`
@@ -36,6 +40,9 @@ const StyledButton = styled.button`
   }
   @media screen and (min-width: 620px) {
     font-size: ${(props) => props.theme.fontM};
+  }
+  &.cart {
+    bottom: 50%;
   }
 `;
 

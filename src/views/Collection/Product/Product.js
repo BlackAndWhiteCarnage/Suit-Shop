@@ -142,7 +142,6 @@ const BigImageBtn = styled.button`
   cursor: pointer;
   transition: 0.5s ease;
   &.show {
-    width: auto;
     height: 100vh;
   }
 `;
@@ -153,8 +152,11 @@ const BigImage = styled.img`
   cursor: pointer;
   transition: 0.5s ease;
   &.show {
-    width: auto;
     height: 100vh;
+    width: 30%;
+    @media screen and (max-width: 680px) {
+      width: 100%;
+    }
   }
 `;
 

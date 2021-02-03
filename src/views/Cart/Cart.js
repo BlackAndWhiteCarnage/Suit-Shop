@@ -44,7 +44,7 @@ const Cart = ({ cart, setCart }) => {
               <Product key={Math.random() * 1000}>
                 <ProductInfo>
                   <ProductName>{item.productName}</ProductName>
-                  <ProductPrice>{item.price}</ProductPrice>
+                  <ProductPrice>{item.price} zł</ProductPrice>
                 </ProductInfo>
                 <ProductImage src={item.productPhotos[0]} />
                 <DeleteBtn
@@ -71,7 +71,7 @@ const Cart = ({ cart, setCart }) => {
           <TotalCost>
             Do zapłaty: <span>{summary()}</span> zł
           </TotalCost>
-          <Btn text={"Zamów"} />
+          <Button className={"cart"} text={"Zamów"} />
         </Wrapper>
       </SectionWrapper>
       <CartImg src={CartImage} />
@@ -86,14 +86,7 @@ const CartWrapper = styled.div`
     display: flex;
   }
 `;
-const Btn = styled(Button)`
-  right: 2rem;
-  bottom: 2rem;
-  @media screen and (min-width: 1200px) {
-    right: 4rem;
-    bottom: 4rem;
-  }
-`;
+
 const SectionWrapper = styled.div`
   position: relative;
   width: 90%;
@@ -204,7 +197,7 @@ const BackBtn = styled.button`
   border: none;
   background: none;
   z-index: 200;
-  width: 3rem;
+  width: auto;
   cursor: pointer;
   transition: 0.5s ease;
 `;

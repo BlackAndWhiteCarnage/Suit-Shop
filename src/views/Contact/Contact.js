@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useScroll } from "../../components/useScroll";
@@ -6,18 +6,45 @@ import ContactImage from "./Contact.jpg";
 import SquareImage from "../../Assets/SquareImage.svg";
 import LogoImage from "../../Assets/Logo.svg";
 import Button from "../../components/Button";
-import {
-  containerAnim,
-  fadeAnim,
-  layerAnim,
-  popAnim,
-  listAnim,
-  scrollAnim,
-  shakeAnim,
-} from "../../components/FramerMotion";
+import { containerAnim, fadeAnim } from "../../components/FramerMotion";
 
 const Contact = () => {
   const [element, controls] = useScroll();
+  const [validEmail, setValidEmail] = useState(false);
+  const [validSubject, setValidSubject] = useState(false);
+  const [validMessage, setValidMessage] = useState(false);
+
+  const emailHandler = (e) => {
+    const valid = /\S+@\S+\.\S+/;
+    if (valid.test(e.target.value)) {
+      setValidEmail(true);
+    } else {
+      setValidEmail(false);
+    }
+  };
+
+  const subjectHandler = (e) => {
+    if (e.target.value.length >= 5) {
+      setValidSubject(true);
+    } else {
+      setValidSubject(false);
+    }
+  };
+
+  const messageHandler = (e) => {
+    if (e.target.value.length >= 20) {
+      setValidMessage(true);
+    } else {
+      setValidMessage(false);
+    }
+  };
+
+  const submitHandler = (e) => {
+    if (validSubject && validEmail && validMessage) {
+      alert("Message submited");
+    }
+    e.preventDefault();
+  };
 
   return (
     <ContactSection
@@ -34,13 +61,24 @@ const Contact = () => {
           <Header variants={fadeAnim}>Have any questions?</Header>
           <SquareTopRight src={SquareImage} variants={fadeAnim} />
           <SquareBottomLeft src={SquareImage} variants={fadeAnim} />
-          <Label htmlFor="Subject">Subject</Label>
-          <Input id="Subject" type="text" />
-          <Label htmlFor="Email">Email</Label>
-          <Input id="Email" type="text" />
-          <Label htmlFor="Message">Message</Label>
-          <TextArea id="Message" type="text" />
-          <Button text={"Submit"} />
+          <Label htmlFor="Subject" className={!validSubject && "invalid"}>
+            Subject
+          </Label>
+          <Input id="Subject" type="text" onChange={subjectHandler} />
+          {!validSubject && <h1>Subject should have 5 or more characters</h1>}
+          <Label htmlFor="Email" className={!validEmail && "invalid"}>
+            Email
+          </Label>
+          <Input id="Email" type="text" onChange={emailHandler} />
+          {!validEmail && (
+            <h1>Email should contain "@" sign and at least one "." sign.</h1>
+          )}
+          <Label htmlFor="Message" className={!validMessage && "invalid"}>
+            Message
+          </Label>
+          <TextArea id="Message" type="text" onChange={messageHandler} />
+          {!validMessage && <h1>Message should have at least 20 characters</h1>}
+          <Button text={"Submit"} click={(e) => submitHandler(e)} />
         </Form>
       </BlackLayer>
     </ContactSection>
@@ -108,6 +146,10 @@ const Label = styled.label`
   width: 80%;
   margin: 1rem 0 2rem 0;
   font-size: ${(props) => props.theme.fontS};
+  color: #00d62f;
+  &.invalid {
+    color: #e40000;
+  }
   @media screen and (min-width: 620px) {
     font-size: ${(props) => props.theme.fontM};
   }

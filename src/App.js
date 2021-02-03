@@ -35,19 +35,19 @@ function App() {
         <Switch>
           <Route path="/" exact>
             <Home cart={cart} />
-            <Parallax bgImage={Suits2} strength={600}>
+            <Parallax bgImage={Suits2} strength={200}>
               <BlackLayer>
                 <SectionHeader>O nas</SectionHeader>
               </BlackLayer>
             </Parallax>
             <AboutUs />
-            <Parallax bgImage={Suits1} strength={600}>
+            <Parallax bgImage={Suits1} strength={200}>
               <BlackLayer>
                 <SectionHeader>Kolekcja</SectionHeader>
               </BlackLayer>
             </Parallax>
             <Collection cart={cart} setCart={setCart} />
-            <Parallax bgImage={Suits3} strength={600}>
+            <Parallax bgImage={Suits3} strength={200}>
               <BlackLayer>
                 <SectionHeader>Kontakt</SectionHeader>
               </BlackLayer>
