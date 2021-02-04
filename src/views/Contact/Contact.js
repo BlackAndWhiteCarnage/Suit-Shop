@@ -58,26 +58,34 @@ const Contact = () => {
       <BlackLayer>
         <Logo src={LogoImage} alt="Logo Image" />
         <Form>
-          <Header variants={fadeAnim}>Have any questions?</Header>
-          <SquareTopRight src={SquareImage} variants={fadeAnim} />
-          <SquareBottomLeft src={SquareImage} variants={fadeAnim} />
+          {/* Inputs & Labels */}
           <Label htmlFor="Subject" className={!validSubject && "invalid"}>
             Subject
           </Label>
           <Input id="Subject" type="text" onChange={subjectHandler} />
-          {!validSubject && <h1>Subject should have 5 or more characters</h1>}
+          {!validSubject && (
+            <Info>Subject should have 5 or more characters</Info>
+          )}
           <Label htmlFor="Email" className={!validEmail && "invalid"}>
             Email
           </Label>
           <Input id="Email" type="text" onChange={emailHandler} />
           {!validEmail && (
-            <h1>Email should contain "@" sign and at least one "." sign.</h1>
+            <Info>
+              Email should contain "@" sign and at least one dot sign.
+            </Info>
           )}
           <Label htmlFor="Message" className={!validMessage && "invalid"}>
             Message
           </Label>
           <TextArea id="Message" type="text" onChange={messageHandler} />
-          {!validMessage && <h1>Message should have at least 20 characters</h1>}
+          {!validMessage && (
+            <Info>Message should have at least 20 characters</Info>
+          )}
+          {/* Styling Icons, and Submit Button */}
+          <Header variants={fadeAnim}>Have any questions?</Header>
+          <SquareTopRight src={SquareImage} variants={fadeAnim} />
+          <SquareBottomLeft src={SquareImage} variants={fadeAnim} />
           <Button text={"Submit"} click={(e) => submitHandler(e)} />
         </Form>
       </BlackLayer>
@@ -173,6 +181,10 @@ const Input = styled.input`
     height: 4rem;
     font-size: ${(props) => props.theme.fontXL};
   }
+`;
+
+const Info = styled.p`
+  font-size: ${(props) => props.theme.fontS};
 `;
 
 const TextArea = styled.textarea`

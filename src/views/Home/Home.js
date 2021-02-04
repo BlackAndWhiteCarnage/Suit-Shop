@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import HomeImage from "./Home.jpg";
 import LogoImage from "../../Assets/Logo.svg";
 import SquareImage from "../../Assets/SquareImage.svg";
 import RedArrowIcon from "../../Assets/RedArrowIcon.svg";
 import CartIcon from "../../Assets/CartIcon.svg";
-import ArrowUp from "../../Assets/ArrowUp.svg";
 import { Link } from "react-scroll";
 import { Link as LinkRouter } from "react-router-dom";
 import { Parallax } from "react-parallax";
@@ -22,7 +21,7 @@ import {
 
 const Home = ({ cart }) => {
   return (
-    <ParallaxImg
+    <Parallax
       bgImage={HomeImage}
       bgImageAlt="Goodlooking man in the suit"
       strength={400}
@@ -33,48 +32,34 @@ const Home = ({ cart }) => {
         initial="hidden"
         animate="show"
       >
+        {/* Cart */}
         <LinkRouter to="/Cart">
           <CartBtn className={cart.length !== 0 && "toggle"}>
             <Cart src={CartIcon} />
             {cart.length !== 0 && <CartCount>{cart.length}</CartCount>}
           </CartBtn>
         </LinkRouter>
+        {/* Styling Layers */}
         <BlackLayer variants={layerAnim} />
         <WhiteLayer variants={layerAnim} />
+        {/* Whole Home Section */}
         <HomeSectionWrapper>
-          <Logo src={LogoImage} alt="Logo Image" variants={fadeAnim} />
           <List variants={listAnim}>
-            <Link activeClass="active" to="Home" smooth={true} duration={1000}>
-              <ListItem variants={popAnim}>Home</ListItem>
-            </Link>
-            <Link
-              activeClass="active"
-              to="About Us"
-              smooth={true}
-              duration={1000}
-            >
+            <Link to="About Us" smooth={true} duration={1000}>
               <ListItem variants={popAnim}>About Us</ListItem>
             </Link>
-            <Link
-              activeClass="active"
-              to="Collection"
-              smooth={true}
-              duration={1000}
-            >
+            <Link to="Collection" smooth={true} duration={1000}>
               <ListItem variants={popAnim}>Collection</ListItem>
             </Link>
-            <Link
-              activeClass="active"
-              to="Contact"
-              smooth={true}
-              duration={1000}
-            >
+            <Link to="Contact" smooth={true} duration={1000}>
               <ListItem variants={popAnim}>Contact</ListItem>
             </Link>
           </List>
           <Quote variants={fadeAnim}>
             The first step to be respected is to look respectable
           </Quote>
+          {/* Section Styling Images */}
+          <Logo src={LogoImage} alt="Logo Image" variants={fadeAnim} />
           <SquareTopRight src={SquareImage} variants={fadeAnim} />
           <SquareBottomLeft src={SquareImage} variants={fadeAnim} />
           <Scroll variants={scrollAnim}>
@@ -83,7 +68,7 @@ const Home = ({ cart }) => {
           </Scroll>
         </HomeSectionWrapper>
       </HomeSection>
-    </ParallaxImg>
+    </Parallax>
   );
 };
 
@@ -95,12 +80,6 @@ const HomeSection = styled(motion.section)`
   align-items: center;
   justify-content: center;
   overflow: hidden;
-`;
-
-const ParallaxImg = styled(Parallax)`
-  width: 100%;
-  min-height: 100vh;
-  object-fit: cover;
 `;
 
 const WhiteLayer = styled(motion.div)`
@@ -131,29 +110,42 @@ const HomeSectionWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
-  height: 90%;
+  height: 80%;
   transition: 1s ease;
-  @media screen and (min-width: 830px) {
-    width: 80%;
-  }
 `;
 
-const Logo = styled(motion.img)`
-  position: absolute;
-  left: 0;
-  top: 0;
-  @media screen and (min-width: 620px) {
-    width: 4rem;
-  }
+const List = styled(motion.ul)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  list-style: none;
+  height: 35%;
 `;
 
-const SquareTopRight = styled(motion.img)`
-  pointer-events: none;
-  position: absolute;
-  right: 0;
-  top: 0;
-  @media screen and (min-width: 620px) {
-    height: 4rem;
+const ListItem = styled(motion.button)`
+  cursor: pointer;
+  padding: 2rem;
+  border: none;
+  background: none;
+  color: #eaeaea;
+  font-size: ${(props) => props.theme.fontM};
+  &::before {
+    content: "";
+    position: absolute;
+    left: -0.5rem;
+    width: 0.5rem;
+    height: 2rem;
+    background: rgba(255, 255, 255, 1);
+    transition: 0.5s ease;
+  }
+  &:hover,
+  :focus {
+    outline: none;
+    &::before {
+      transition: 0.5s ease;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.3);
+    }
   }
 `;
 
@@ -166,6 +158,7 @@ const Cart = styled.img`
     width: 3.5rem;
   }
 `;
+
 const CartCount = styled.p`
   color: #e40000;
   font-size: ${(props) => props.theme.fontXL};
@@ -190,7 +183,6 @@ const CartBtn = styled.button`
   transition: 0.2s ease;
   &.toggle {
     width: 5rem;
-    border-radius: 0;
   }
   @media screen and (min-width: 620px) {
     width: 4rem;
@@ -206,12 +198,10 @@ const CartBtn = styled.button`
       width: 8rem;
       &:hover {
         width: 9rem;
-        transition: 0.2s ease;
       }
     }
     &:hover {
       width: 6rem;
-      transition: 0.2s ease;
     }
   }
   @media screen and (min-width: 1200px) {
@@ -219,38 +209,8 @@ const CartBtn = styled.button`
     height: 6rem;
     &:hover {
       width: 7rem;
-      transition: 0.2s ease;
     }
   }
-`;
-
-const SquareBottomLeft = styled(motion.img)`
-  pointer-events: none;
-  display: none;
-  @media screen and (min-width: 1200px) {
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 4rem;
-    transform: rotate(180deg);
-  }
-`;
-
-const Scroll = styled(motion.h1)`
-  display: flex;
-  align-items: center;
-  writing-mode: vertical-rl;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  color: #e40000;
-  pointer-events: none;
-  font-size: 3rem;
-`;
-
-const Arrow = styled(motion.img)`
-  width: 2rem;
 `;
 
 const Quote = styled(motion.q)`
@@ -273,44 +233,53 @@ const Quote = styled(motion.q)`
   }
 `;
 
-const List = styled(motion.ul)`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  list-style: none;
-  font-size: ${(props) => props.theme.fontS};
-  height: 40%;
+const Logo = styled(motion.img)`
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
   @media screen and (min-width: 620px) {
-    font-size: ${(props) => props.theme.fontM};
-    width: 20rem;
+    width: 4rem;
   }
 `;
 
-const ListItem = styled(motion.button)`
-  cursor: pointer;
-  padding: 2rem;
-  border: none;
-  background: none;
-  color: #eaeaea;
-  font-size: 1.8rem;
-  &::before {
-    content: "";
+const SquareTopRight = styled(motion.img)`
+  position: absolute;
+  right: 0;
+  top: 0;
+  pointer-events: none;
+  @media screen and (min-width: 620px) {
+    width: 4rem;
+  }
+`;
+
+const SquareBottomLeft = styled(motion.img)`
+  pointer-events: none;
+  display: none;
+  @media screen and (min-width: 1200px) {
+    display: block;
     position: absolute;
-    left: -0.5rem;
-    width: 0.5rem;
-    height: 2rem;
-    background: rgba(255, 255, 255, 1);
-    transition: 0.5s ease;
+    left: 0;
+    bottom: 0;
+    width: 4rem;
+    transform: rotate(180deg);
   }
-  &:hover,
-  :focus {
-    outline: none;
-    &::before {
-      transition: 0.5s ease;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.3);
-    }
-  }
+`;
+
+const Scroll = styled(motion.p)`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  writing-mode: vertical-rl;
+  right: 0;
+  bottom: 0;
+  color: #e40000;
+  font-size: ${(props) => props.theme.fontXL};
+  pointer-events: none;
+`;
+
+const Arrow = styled(motion.img)`
+  width: 2rem;
 `;
 
 export default Home;

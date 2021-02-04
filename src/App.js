@@ -29,7 +29,7 @@ function App() {
   const [cart, setCart] = useState([]);
 
   return (
-    <div className="App">
+    <>
       <GlobalStyles />
       <ThemeProvider theme={theme}>
         <Switch>
@@ -37,19 +37,19 @@ function App() {
             <Home cart={cart} />
             <Parallax bgImage={Suits2} strength={200}>
               <BlackLayer>
-                <SectionHeader>O nas</SectionHeader>
+                <SectionHeader>About Us</SectionHeader>
               </BlackLayer>
             </Parallax>
             <AboutUs />
             <Parallax bgImage={Suits1} strength={200}>
               <BlackLayer>
-                <SectionHeader>Kolekcja</SectionHeader>
+                <SectionHeader>Collection</SectionHeader>
               </BlackLayer>
             </Parallax>
             <Collection cart={cart} setCart={setCart} />
             <Parallax bgImage={Suits3} strength={200}>
               <BlackLayer>
-                <SectionHeader>Kontakt</SectionHeader>
+                <SectionHeader>Contact</SectionHeader>
               </BlackLayer>
             </Parallax>
             <Contact />
@@ -60,17 +60,16 @@ function App() {
           </Route>
         </Switch>
       </ThemeProvider>
-    </div>
+    </>
   );
 }
 
 const BlackLayer = styled.div`
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 50rem;
+  height: 40rem;
   background: rgba(0, 0, 0, 0.7);
   @media screen and (max-width: 620px) {
     height: 15rem;

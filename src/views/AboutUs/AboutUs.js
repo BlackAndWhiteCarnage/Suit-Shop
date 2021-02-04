@@ -36,14 +36,17 @@ const AboutUs = () => {
         alt="Man looking down the suit"
         variants={scaleAnim}
       />
+      {/* Scroll to the top arrow */}
       <ArrowWrapper onClick={scrollTopHandler} variants={fadeAnim}>
         <HomeArrow src={ArrowUp} />
       </ArrowWrapper>
+      {/* Styling div */}
       <AboutUsSquare>
-        <X src={XIcon} variants={scaleRotateAnim} />
+        <XShape src={XIcon} variants={scaleRotateAnim} />
         <Waves src={WavesIcon} variants={scaleRotateAnim} />
         <Shape src={ShapeIcon3} variants={scaleRotateAnim} />
       </AboutUsSquare>
+      {/* Main section content */}
       <AboutUsSectionWrapper>
         <Header variants={scaleAnim}>
           Who are we?
@@ -58,6 +61,7 @@ const AboutUs = () => {
           called Suitsless.
         </Article>
       </AboutUsSectionWrapper>
+      {/* Styling img */}
       <Triangle src={TriangleImage} />
     </AboutUsSection>
   );
@@ -71,78 +75,14 @@ const AboutUsSection = styled(motion.section)`
   overflow: hidden;
 `;
 
-const ArrowWrapper = styled(motion.button)`
-  border: none;
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  right: 0.5rem;
-  bottom: 0.5rem;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 500;
-  transition: 0.2s ease;
-  width: 3rem;
-  height: 3rem;
-  cursor: pointer;
-  @media screen and (min-width: 820px) {
-    width: 4rem;
-    height: 4rem;
-    &:hover {
-    width: 5rem;
-    transition: 0.2s ease;
-  }
-  }
-  @media screen and (min-width: 1200px) {
-    width: 6rem;
-    height: 6rem;
-    &:hover {
-    width: 7rem;
-    transition: 0.2s ease;
-  }
-
-`;
-const HomeArrow = styled.img`
-  width: 2.5rem;
-  @media screen and (min-width: 820px) {
-    width: 3rem;
-  }
-  @media screen and (min-width: 1200px) {
-    width: 3.5rem;
-  }
-`;
-
-const AboutUsSquare = styled.div`
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 90%;
-  z-index: 8;
-  @media screen and (min-width: 830px) {
-    width: 80%;
-  }
-`;
-
-const AboutUsSectionImage = styled(motion.img)`
-  width: 30%;
-  height: 100vh;
-  object-fit: cover;
-`;
-
 const AboutUsSectionWrapper = styled.div`
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background: #141c1f;
 `;
 
-const Header = styled(motion.h1)`
+const Header = styled(motion.h2)`
   position: relative;
   font-size: ${(props) => props.theme.fontM};
   margin: 2rem;
@@ -176,6 +116,68 @@ const Article = styled(motion.article)`
   }
 `;
 
+const ArrowWrapper = styled(motion.button)`
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 500;
+  transition: 0.2s ease;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  cursor: pointer;
+  @media screen and (min-width: 820px) {
+    width: 4rem;
+    height: 4rem;
+    &:hover {
+      width: 5rem;
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    width: 6rem;
+    height: 6rem;
+    &:hover {
+      width: 7rem;
+    }
+  }
+`;
+
+const HomeArrow = styled.img`
+  width: 2.5rem;
+  @media screen and (min-width: 820px) {
+    width: 3rem;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 3.5rem;
+  }
+`;
+
+const AboutUsSquare = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 90%;
+  z-index: 8;
+  @media screen and (min-width: 830px) {
+    width: 80%;
+  }
+`;
+
+const AboutUsSectionImage = styled(motion.img)`
+  width: 30%;
+  height: 100vh;
+  object-fit: cover;
+`;
+
 const Triangle = styled.img`
   position: absolute;
   bottom: 0;
@@ -196,7 +198,7 @@ const Shape = styled(motion.img)`
   }
 `;
 
-const X = styled(motion.img)`
+const XShape = styled(motion.img)`
   position: absolute;
   right: 0;
   top: 0;
