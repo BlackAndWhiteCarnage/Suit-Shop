@@ -20,7 +20,7 @@ body, button{
         outline: none;
     }
 }
-::-webkit-scrollbar {
+    ::-webkit-scrollbar {
     width: .5rem;
     height: .5rem;
     }

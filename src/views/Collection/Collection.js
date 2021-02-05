@@ -38,7 +38,6 @@ const Collection = ({ cart, setCart }) => {
 
   const passItemHandler = (item) => {
     setProductItem(item);
-    console.log(item);
   };
 
   const bigImageHandler = (photo) => {
@@ -126,7 +125,6 @@ const Collection = ({ cart, setCart }) => {
 const CollectionSection = styled(motion.section)`
   width: 100%;
   height: 100vh;
-  background: #141c1f;
   display: flex;
   position: relative;
   @media screen and (min-width: 830px) {
@@ -151,7 +149,7 @@ const MainCategories = styled(motion.ul)`
   list-style: none;
   width: 100%;
   height: 60%;
-  background: #1b2327;
+  background: ${(props) => props.theme.bgBrighter};
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -175,7 +173,7 @@ const Shape = styled.img`
 
 const Shape2 = styled.img`
   position: absolute;
-  right: 0;
+  right: 1rem;
   bottom: 1rem;
   z-index: 5;
   @media screen and (min-width: 830px) {
@@ -198,7 +196,7 @@ const SubCategories = styled.ul`
   position: relative;
   width: 100%;
   height: 40%;
-  background: #141c1f;
+  background: ${(props) => props.theme.bgDarker};
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -217,6 +215,7 @@ const ListItem = styled(motion.button)`
   cursor: pointer;
   position: relative;
   width: fit-content;
+  color: ${(props) => props.theme.primary};
   &::before {
     content: "";
     position: absolute;
@@ -265,7 +264,7 @@ const ProductsImages = styled.div`
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  background: #1b2327;
+  background: ${(props) => props.theme.bgBrighter};
   @media screen and (min-width: 830px) {
     flex-direction: row;
     flex-wrap: wrap;

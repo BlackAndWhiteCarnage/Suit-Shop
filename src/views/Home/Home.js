@@ -127,7 +127,7 @@ const ListItem = styled(motion.button)`
   padding: 2rem;
   border: none;
   background: none;
-  color: #eaeaea;
+  color: ${(props) => props.theme.primary};
   font-size: ${(props) => props.theme.fontM};
   &::before {
     content: "";
@@ -160,7 +160,7 @@ const Cart = styled.img`
 `;
 
 const CartCount = styled.p`
-  color: #e40000;
+  color: ${(props) => props.theme.secondary};
   font-size: ${(props) => props.theme.fontXL};
   @media screen and (min-width: 820px) {
     font-size: ${(props) => props.theme.fontXXL};
@@ -219,6 +219,7 @@ const Quote = styled(motion.q)`
   left: 0;
   width: 11rem;
   font-size: ${(props) => props.theme.fontS};
+  color: ${(props) => props.theme.primary};
   font-weight: 400;
   @media screen and (min-width: 620px) {
     font-size: ${(props) => props.theme.fontM};
@@ -273,7 +274,7 @@ const Scroll = styled(motion.p)`
   writing-mode: vertical-rl;
   right: 0;
   bottom: 0;
-  color: #e40000;
+  color: ${(props) => props.theme.secondary};
   font-size: ${(props) => props.theme.fontXL};
   pointer-events: none;
 `;

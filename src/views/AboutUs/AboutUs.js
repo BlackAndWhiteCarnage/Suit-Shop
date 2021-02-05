@@ -73,13 +73,14 @@ const AboutUsSection = styled(motion.section)`
   display: flex;
   position: relative;
   overflow: hidden;
+  color: ${(props) => props.theme.primary};
 `;
 
 const AboutUsSectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #141c1f;
+  background: ${(props) => props.theme.bgDarker};
 `;
 
 const Header = styled(motion.h2)`

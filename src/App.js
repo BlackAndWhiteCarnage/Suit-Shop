@@ -77,6 +77,7 @@ const BlackLayer = styled.div`
 `;
 
 const SectionHeader = styled.h1`
+  color: ${(props) => props.theme.primary};
   font-size: 3.6rem;
   letter-spacing: 1rem;
   @media screen and (min-width: 620px) {

@@ -71,7 +71,7 @@ const ProductItemWrapper = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #141c1f;
+  background: ${(props) => props.theme.bgDarker};
   z-index: 10;
   display: flex;
   overflow: hidden;

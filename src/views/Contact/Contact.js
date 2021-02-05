@@ -156,7 +156,7 @@ const Label = styled.label`
   font-size: ${(props) => props.theme.fontS};
   color: #00d62f;
   &.invalid {
-    color: #e40000;
+    color: ${(props) => props.theme.secondary};
   }
   @media screen and (min-width: 620px) {
     font-size: ${(props) => props.theme.fontM};
@@ -167,7 +167,7 @@ const Input = styled.input`
   width: 80%;
   height: 2rem;
   font-size: ${(props) => props.theme.fontM};
-  color: white;
+  color: ${(props) => props.theme.primary};
   border: none;
   background: rgba(255, 255, 255, 0.2);
   &:focus {
@@ -184,14 +184,20 @@ const Input = styled.input`
 `;
 
 const Info = styled.p`
+  margin-top: 0.5rem;
   font-size: ${(props) => props.theme.fontS};
+  color: ${(props) => props.theme.primary};
+  @media screen and (max-width: 680px) {
+    width: 80%;
+    font-size: 0.8rem;
+  }
 `;
 
 const TextArea = styled.textarea`
   width: 80%;
   height: 10rem;
   font-size: ${(props) => props.theme.fontS};
-  color: white;
+  color: ${(props) => props.theme.primary};
   border: none;
   resize: none;
   background: rgba(255, 255, 255, 0.2);
@@ -212,6 +218,7 @@ const Header = styled(motion.h2)`
   position: absolute;
   top: 0;
   left: 0;
+  color: ${(props) => props.theme.primary};
   font-size: ${(props) => props.theme.fontM};
   @media screen and (min-width: 620px) {
     font-size: ${(props) => props.theme.fontXL};

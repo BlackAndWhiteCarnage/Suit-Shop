@@ -82,6 +82,7 @@ const Cart = ({ cart, setCart }) => {
 const CartWrapper = styled.div`
   width: 100%;
   height: 100vh;
+  color: ${(props) => props.theme.primary};
   @media screen and (min-width: 1200px) {
     display: flex;
   }
@@ -91,7 +92,7 @@ const SectionWrapper = styled.div`
   position: relative;
   width: 90%;
   height: 100vh;
-  background: #141c1f;
+  background: ${(props) => props.theme.bgDarker};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -130,7 +131,7 @@ const CartImg = styled.img`
   }
 `;
 const ProductPrice = styled.p`
-  color: #e40000;
+  color: ${(props) => props.theme.secondary};
   font-size: ${(props) => props.theme.fontM};
 `;
 const Square = styled.img`
@@ -252,7 +253,7 @@ const ProductsCount = styled.h4`
   font-size: ${(props) => props.theme.fontS};
   margin-bottom: 2rem;
   span {
-    color: #e40000;
+    color: ${(props) => props.theme.secondary};
   }
   @media screen and (min-width: 620px) {
     font-size: ${(props) => props.theme.fontM};
@@ -261,7 +262,7 @@ const ProductsCount = styled.h4`
 const TotalCost = styled.h4`
   font-size: ${(props) => props.theme.fontM};
   span {
-    color: #e40000;
+    color: ${(props) => props.theme.secondary};
   }
 `;
 

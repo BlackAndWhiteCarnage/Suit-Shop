@@ -157,6 +157,7 @@ const ProductInfoWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: ${(props) => props.theme.primary};
   @media screen and (min-width: 680px) {
     width: 100%;
     height: 100%;
@@ -205,7 +206,7 @@ const ProductPrice = styled.p`
 const DescriptionButton = styled.button`
   border: none;
   background: none;
-  color: white;
+  color: ${(props) => props.theme.primary};
   font-family: "Libre Baskerville", serif;
   font-weight: bold;
   font-size: ${(props) => props.theme.fontS};
